@@ -1,6 +1,6 @@
 # Consistency notes — eng-principles-agentic.md
 
-**Verdict:** revise
+**Verdict:** accept
 
 ## Verdict rationale
 
@@ -74,3 +74,9 @@ No other interactions between PRODUCT_RULES.md and the seven agentic principles 
 ## Required changes
 
 1. **Principle 7 body — correct the back-reference.** Replace "Universal Principle 6's Rule D3 says ADRs are living documents that get superseded rather than ignored" with a reference that does not attribute Rule D3 to Principle 6. Suggested fix: "The universal file's Rule D3 says ADRs are living documents that get superseded rather than ignored." Alternatively: "Rule D3 in `eng-principles-universal.md` says ADRs are living documents that get superseded rather than ignored." The key correction is removal of "Principle 6's" — Rule D3 is a standalone D-section rule, not a sub-item of any numbered principle.
+
+## Confirmation pass (v3)
+
+**Verdict:** accept
+
+Citation corrected. No new inconsistencies introduced.
