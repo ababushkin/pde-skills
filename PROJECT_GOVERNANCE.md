@@ -91,13 +91,15 @@ Known carve-outs at M5: Eng Universal Principle 1 (outcome verification), Roadma
 
 ## 5. Owner role and bottleneck management
 
-**Responsibilities:** final acceptance on every artefact, brief authoring (just-in-time, with prior conversation as input), escalation resolution, PR merges, final integration sign-off.
+**Responsibilities:** final acceptance on every artefact, brief approval (substance from owner, drafting by agents — see `PROJECT_PLAN.md` §10), escalation resolution, PR merges, final integration sign-off, answering questions when authors and editors hit decisions only the owner can make.
+
+**What the owner does NOT do:** draft briefs in YAML, author skill prose, perform editorial review, run consistency checks. Those are agent responsibilities. Owner attention is spent on substance and approval, not on form.
 
 **Bottleneck management:** owner attention is the only role that doesn't parallelise.
 
-- **Batch by activity type.** Fixed windows for brief-writing; fixed windows for PR sign-off. Don't context-switch between authoring a brief and reviewing a different artefact's PR.
-- **Front-load independent briefs.** Briefs that don't depend on prior accepted artefacts can be drafted in advance pairs:
-  - `PRODUCT_RULES.md` and `eng-principles-universal.md` (no dependencies on each other)
+- **Batch by activity type.** Fixed windows for brief approval; fixed windows for PR sign-off. Don't context-switch between approving a brief and reviewing a different artefact's PR.
+- **Front-load substance for independent briefs.** For artefacts whose briefs don't depend on prior accepted artefacts, the owner can convey substance to the supervisor in advance pairs:
+  - `PRODUCT_RULES.md` and `eng-principles-universal.md` (no dependencies on each other; both fast-path)
   - `idea-triage` and `design-doc` (after their respective rules files are accepted)
   - `stop-the-line` (after `eng-principles-agentic.md` is at draft stage)
 
@@ -283,6 +285,8 @@ This project ends at M6.
 ---
 
 ## 11. Plan version history
+
+- **v1.6** — Owner role corrected. Briefs are agent-drafted and owner-approved, not owner-authored. Workflow gains a fast-path variant for artefacts whose substance is already settled (v0.1 rules files derived from existing principles documents). Plan §5.1, §6.2, §7, §10 updated accordingly. Governance §5 (owner role) reflects the actual owner contribution: substance and approval, not drafting. The two engineering principles files (`eng-principles-universal.md`, `eng-principles-agentic.md`) generated as part of this revision and slotted directly under `skills/engineering/` — they take the fast-path workflow on first authoring.
 
 - **v1.5** — Split into PROJECT_PLAN.md (operational spine) and PROJECT_GOVERNANCE.md (this file). Anatomy specs, brief template, and authoring learnings extracted to `docs/`. Editor-actionable OKR content promoted into `PROJECT_PLAN.md` §6.3 reject triggers. Net effect: agents executing the build load only operational content; owner-facing material lives where the owner reads it. Total content ~50% of v1.4 size in the file an executing agent loads.
 

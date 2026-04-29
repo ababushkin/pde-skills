@@ -1,3 +1,7 @@
+PR-level hook that scans incoming diffs for signal-suppression moves: type suppressions, compiler directives, test skips, static-analysis suppressions, and deleted assertions. Fires on every PR with a diff — no size floor. Uses five pattern categories expressed as stack-agnostic placeholders; the hook body gives per-stack examples for illustration only. Non-blocking by design: when it fires, the work goes back for investigation, not re-suppression. Establishes the failure-mode-detection pattern that `small-batch` and `evidence-claim` (both Next) will follow.
+
+---
+
 artefact: stop-the-line
 category: hook
 pack: engineering

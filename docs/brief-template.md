@@ -4,6 +4,12 @@ Each Now artefact gets a brief written before authoring begins, just-in-time as 
 
 ## Format
 
+Each brief starts with a plain-English summary paragraph for owner review, followed by the YAML block for agent use.
+
+**Summary paragraph** — 3–5 sentences before the YAML. States: what the artefact does, when it fires, key scope boundary, any non-obvious decisions for the owner to confirm. Written in the pack's direct register. No YAML, no bullets.
+
+---
+
 ```yaml
 artefact: <name>
 category: <skill | hook | sub-agent | rules>
