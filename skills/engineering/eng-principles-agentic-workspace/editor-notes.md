@@ -1,6 +1,6 @@
 # Editor notes — eng-principles-agentic.md
 
-**Verdict:** accept with notes
+**Verdict:** accept
 
 ## Verdict rationale
 
@@ -72,3 +72,20 @@ Named hooks and their lifecycle stages are correctly identified:
 2. **Part 2 small batches — resolve the ~7% DORA citation.** Either (a) add the specific chapter/section of the 2024 DORA report that supports the ~7% figure, (b) soften to a directional finding without a specific percentage if the exact passage cannot be located, or (c) remove the percentage and state the finding qualitatively. Do the same for the "gains compound" companion claim if it comes from the same passage.
 
 3. **Part 3 — add explicit pointer to `eng-principles-universal.md`.** One line is sufficient: e.g., "Foundation: `eng-principles-universal.md` (tier 1, ten universal principles)." This makes the quick-reference section self-contained for readers who start there.
+
+---
+
+## Confirmation pass (v2)
+
+**Verdict:** accept
+
+### Fix verification
+1. **Principle 6 — plain-language rewrite:** Confirmed. "gradient-descended toward 'make the error go away'" is replaced with "agents are optimised to make errors disappear, and silencing achieves that faster than fixing." (line 47). "Optimised" is plain; "silencing achieves that faster than fixing" is direct and clean — no hedging, no formal substitution.
+2. **Part 2 small batches — ~7% figure removed:** Confirmed. The sentence containing "~7% drop in delivery throughput" is gone. The directional finding remains: "The 2024 DORA report found that AI-assisted coding raises individual output but degrades stability when batch size grows." The companion finding ("AI-assisted teams that hold batch size constant see the gains compound rather than offset") is also preserved. No unverifiable precision claim remains.
+3. **Part 3 — companion file pointer added:** Confirmed. Final line reads "See `eng-principles-universal.md` for the full tier-1 principles set." (line 90). Pointer is accurate for the intended location (`skills/engineering/eng-principles-universal.md`). Note: the companion file does not yet exist in the branch — it is a forthcoming artefact. The pointer is forward-correct but currently unresolvable; this is expected given the pack is under construction, not a v2 defect.
+
+### New issues introduced
+None. The three fixes are surgical — no surrounding text was disturbed, no new jargon introduced, no structural changes made. The diff scope is clean: only the targeted lines changed.
+
+### Final verdict rationale
+All three required fixes are correctly applied and no new issues were introduced, so the document is ready to advance to the consistency check stage.
