@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-30 (M3: three drafts at owner-review)
+Last updated: 2026-04-30 (M3: incremental-implementation accepted; three earlier artefacts at owner-review)
 
 ---
 
@@ -28,7 +28,7 @@ Last updated: 2026-04-30 (M3: three drafts at owner-review)
 | 3 | `eng-principles-universal.md` | rules | engineering | accepted | — | merged PR #1 |
 | 4 | `eng-principles-agentic.md` | rules | engineering | accepted | — | merged PR #3 |
 | 5 | `design-doc` | skill | engineering | owner-review | skill/design-doc | PR #5 |
-| 6 | `incremental-implementation` | skill | engineering | pending | — | sequential after #5 |
+| 6 | `incremental-implementation` | skill | engineering | accepted | — | merged to main |
 | 7 | `stop-the-line` | hook | hook | owner-review | hook/stop-the-line | PR #6 |
 | 8 | README routing section | meta | meta | pending | — | owner work, M6 |
 
