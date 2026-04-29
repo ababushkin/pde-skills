@@ -1,6 +1,6 @@
 # Editor notes — PRODUCT_RULES.md
 
-**Verdict:** reject
+**Verdict:** accept
 
 ## Verdict rationale
 
@@ -62,3 +62,21 @@ The draft feels like it comes from the same project. The Part 2 intro paragraph,
 2. **Rule A5 body:** Restore source wording: "to prevent the anti-pattern of either (a) inflating trivial work with grand outcomes, or (b) letting real product work escape outcome framing by hiding inside KTLO."
 3. **Rule C3 body:** Restore "%" symbol in place of "percentage" to match source.
 4. **Rule C5 body:** Restore "(a) a miracle or (b) not being looked at" to match source.
+
+---
+
+## Re-review (v2)
+
+**Verdict:** accept
+
+### Fix verification
+1. Header: confirmed — "operationalises" replaced with "handles problem-framing at the point of intake."
+2. Rule A5: confirmed — source wording with `(a)`/`(b)` structure and "anti-pattern" framing restored exactly.
+3. Rule C3: confirmed — "%" symbol restored in all three occurrences; "percentage" is gone.
+4. Rule C5: confirmed — "(a) a miracle or (b) not being looked at" restored.
+
+### New issues introduced
+None.
+
+### Final verdict rationale
+All four required fixes are correctly applied and the diff between v1 and v2 contains exactly those four changes and nothing else.
