@@ -38,6 +38,9 @@ principles_implemented:
   - source: eng-agentic
     id: P3
     bucket: embedded
+  - source: eng-agentic
+    id: P5
+    bucket: embedded
 length_target: 250-300
 author: Anton Babushkin
 predecessor:
