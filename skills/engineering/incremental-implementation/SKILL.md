@@ -120,7 +120,7 @@ b. Implement the minimum code that makes those tests pass. No speculative additi
 
 c. **[GATE]** Verify: tests green, CI green. If anything fails, stop. Investigate the root cause (Agentic P6). Do not continue to the next sub-step while CI is red.
 
-d. Commit the slice.
+d. Commit the slice. Each slice commit is short-lived; do not accumulate uncommitted slice work across sessions (Rule C1).
 
 e. Surface any open questions raised by this slice. If the slice invalidates a design assumption, pause, document the question, and resolve it before continuing. Building past an invalidated assumption without surfacing it is a violation of Agentic P3.
 
@@ -138,7 +138,7 @@ This path covers all KTLO bug fixes. No design doc, no walking skeleton gate, no
 
 **Step 2** — Fix the minimum code required to make the test pass (Rule B1).
 
-**Step 3 [GATE]** — Verify: test green, CI green. If any other test broke, stop and investigate before continuing.
+**Step 3 [GATE]** — Verify: test green, CI green. If any other test broke, stop and investigate before continuing (Agentic P6; stop-the-line hook applies).
 
 **Step 4** — Commit.
 
@@ -155,7 +155,7 @@ Optional: at Step 3 of Path 1, the implementer may record the slice list as a ch
 | Rationalisation | Rebuttal |
 |---|---|
 | "We'll do the walking skeleton after we understand the codebase better." | Rule B2: pre-skeleton estimates are uncalibrated. The skeleton is how you understand the codebase — it flushes out the integration surprises that wreck schedules. Deferring it means deferring the only reliable source of ground truth. |
-| "This slice is too big to split." | It is not a vertical slice; it is a horizontal layer. Break it into observable states: what can the system do after each step that it could not do before? If you cannot answer that question for a sub-piece, the boundary is wrong, not the approach. |
+| "This slice is too big to split." | It is not a vertical slice; it is a horizontal layer (Rule B2: slices must deliver observable behaviour end-to-end). Break it into observable states: what can the system do after each step that it could not do before? If you cannot answer that question for a sub-piece, the boundary is wrong, not the approach. |
 | "I'll write the tests after I understand the code better." | Rule C8: tests are specification of behaviour, not coverage. Writing them first forces you to define the acceptance criterion before implementing it. Tests written after describe what you built; they do not constrain what you should have built. |
 | "The CI is failing but it's just a flaky test — I'll keep going." | Rule C4 and Agentic P6: flaky tests are bugs, not background noise. A failing build is a stop signal. Proceeding past it is the specific failure mode the stop-the-line hook guards against. Stop and fix the flaky test first. |
 | "The design doc changed while I was implementing — I'll just go with what I have." | Agentic P3: the spec holds the work. If the accepted design doc has changed, or if your implementation has diverged from it, surface the delta explicitly, document it, and get it accepted. Silently building something different from the accepted doc is invisible scope drift. |
