@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-29 (M2 in progress — all 3 root rules files at owner-review)
+Last updated: 2026-04-30 (M2 complete — M3 in progress)
 
 ---
 
@@ -11,7 +11,7 @@ Last updated: 2026-04-29 (M2 in progress — all 3 root rules files at owner-rev
 | Milestone | Description | Status |
 |-----------|-------------|--------|
 | M1 | Project setup complete. Repo initialised, anatomy specs accepted, `PROJECT_STATE.md` initialised. | complete |
-| M2 | Root rules files accepted. `PRODUCT_RULES.md`, `eng-principles-universal.md`, `eng-principles-agentic.md` merged. | pending |
+| M2 | Root rules files accepted. `PRODUCT_RULES.md`, `eng-principles-universal.md`, `eng-principles-agentic.md` merged. | complete |
 | M3 | Now complete. All 8 Now artefacts accepted, coverage matrix audit done. | pending |
 | M4 | References complete. All 6 reference files merged. | pending |
 | M5 | Promotion review (optional). Re-evaluate Next items against current evidence. | pending |
@@ -23,13 +23,14 @@ Last updated: 2026-04-29 (M2 in progress — all 3 root rules files at owner-rev
 
 | # | Artefact | Category | Track | Status | Branch | Notes |
 |---|----------|----------|-------|--------|--------|-------|
-| 1 | `PRODUCT_RULES.md` | rules | product | owner-review | rules/product-rules | PR #2 open |
-| 2 | `idea-triage` | skill | product | pending | — | sequential after #1 accepted |
-| 3 | `eng-principles-universal.md` | rules | engineering | owner-review | rules/eng-principles-universal | PR #1 open |
-| 4 | `eng-principles-agentic.md` | rules | engineering | owner-review | rules/eng-principles-agentic | PR #3 open |
+| 1 | `PRODUCT_RULES.md` | rules | product | accepted | — | merged PR #2 |
+| 2 | `idea-triage` | skill | product | pending | — | brief drafting in progress |
+| 3 | `eng-principles-universal.md` | rules | engineering | accepted | — | merged PR #1 |
+| 4 | `eng-principles-agentic.md` | rules | engineering | accepted | — | merged PR #3 |
+| 5 | `design-doc` | skill | engineering | pending | — | brief drafting in progress |
 | 5 | `design-doc` | skill | engineering | pending | — | sequential after #4 |
 | 6 | `incremental-implementation` | skill | engineering | pending | — | sequential after #5 |
-| 7 | `stop-the-line` | hook | hook | pending | — | gated on #4 at draft stage |
+| 7 | `stop-the-line` | hook | hook | pending | — | brief drafting in progress; gated on #4 now satisfied |
 | 8 | README routing section | meta | meta | pending | — | owner work, M6 |
 
 ---
