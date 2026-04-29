@@ -40,21 +40,27 @@ purpose: >
   `small-batch` and `evidence-claim` will follow.
 scope:
   in: |
-    - TypeScript `as any` and `: any` type casts added in the diff
-    - `// @ts-ignore` and `// @ts-nocheck` comments added in the diff
-    - `.skip(` added in test files in the diff (any test framework)
-    - `.only(` added in test files in the diff (silences all other tests)
-    - `eslint-disable` comments (inline or block) added in the diff
+    Four pattern categories, stack-agnostic. Each category has a named example; the hook body
+    supplies `<suppress-pattern>` placeholders for stack-specific implementations.
+
+    - Type suppressions added in the diff: unsafe casts that silence the type system
+      (e.g. `as any` / `: any` in TypeScript; `# type: ignore` in Python; `@SuppressWarnings` in Java)
+    - Compiler/analyser directives that suppress errors added in the diff
+      (e.g. `// @ts-ignore`, `// @ts-nocheck` in TypeScript; `//nolint` in Go; `[SuppressMessage]` in C#)
+    - Test-skip markers added in test files in the diff
+      (e.g. `.skip(` in Jest/Mocha/Vitest; `@pytest.mark.skip` in Python; `t.Skip()` in Go)
+    - Static analysis suppressions added in the diff
+      (e.g. `eslint-disable` in JS/TS; `# noqa` in Python; `#[allow(...)]` in Rust)
     - Assertion deletions: test file line count drops while non-test code changes exist in the same PR
-    - `// TODO: fix` or `// TODO: fixme` comments added alongside any of the above patterns
+      (language-agnostic; line-count comparison)
   out: |
     - PR size (line count, branch age) — covered by `small-batch` (Next)
     - Completion-claim evidence — covered by `evidence-claim` (Next)
     - Pre-existing suppressions in the codebase — this hook flags new additions in the diff only
     - Whether the suppressed signal was correct (i.e. was the skipped test testing the right thing) — that is a sub-agent judgement call, not a mechanical check
-    - Non-TypeScript language-specific suppression patterns — TypeScript patterns are primary examples; placeholder equivalents for other stacks are noted in the hook body
+    - Test-isolation markers (e.g. `.only(`) — these silence other tests rather than suppress a signal; author decides whether to include in scope or keep as advisory note
 size_triggers:
-  fires_for: "Any PR that includes a diff — there is no size floor. A one-line change that adds `as any` fires the hook."
+  fires_for: "Any PR that includes a diff — there is no size floor. A one-line change that adds a suppression pattern fires the hook."
   does_not_fire_for: "PRs with no diff (empty commits, tag-only changes). Pre-existing suppressions not touched by the diff do not re-trigger the hook."
 inputs: |
   The PR diff. Specifically:
@@ -67,13 +73,12 @@ outputs:
   artefact_name: HOOK.md
 workflow_outline: |
   1. RECEIVE diff — the hook is triggered on PR open or update; input is the PR diff
-  2. SCAN added lines for suppression patterns:
-     - Gate A: `as any` or `: any` in non-comment, non-string context → FAIL with pattern, file, line
-     - Gate B: `// @ts-ignore` or `// @ts-nocheck` in added lines → FAIL with pattern, file, line
-     - Gate C: `.skip(` in added lines in test files → FAIL with pattern, file, line
-     - Gate D: `.only(` in added lines in test files → FAIL with pattern, file, line
-     - Gate E: `eslint-disable` (any form) in added lines → FAIL with pattern, file, line
-     - Gate F: test file line count drops while non-test changed files exist → FAIL with file, before/after count
+  2. SCAN added lines for suppression patterns (stack-agnostic categories; examples in parens):
+     - Gate A: type suppression added (`as any` in TS; `# type: ignore` in Python; `@SuppressWarnings` in Java; `<suppress-type-pattern>`) → FAIL with pattern, file, line
+     - Gate B: compiler/analyser directive suppression added (`@ts-ignore`/`@ts-nocheck` in TS; `//nolint` in Go; `<suppress-analyser-pattern>`) → FAIL with pattern, file, line
+     - Gate C: test-skip marker added in test file (`.skip(` in Jest/Vitest; `@pytest.mark.skip`; `t.Skip()`; `<skip-pattern>`) → FAIL with pattern, file, line
+     - Gate D: static analysis suppression added (`eslint-disable` in JS/TS; `# noqa`; `#[allow(...)]`; `<lint-suppress-pattern>`) → FAIL with pattern, file, line
+     - Gate E: test file line count drops while non-test changed files exist → FAIL with file, before/after count
   3. COLLECT all findings across all gates
   4. REPORT findings — if any gate fired: list each finding (pattern, file, line); state that the work is returned for investigation, not re-suppression; do not block the PR automatically
   5. PASS — if no gate fired, report clean and allow the PR to proceed
@@ -85,9 +90,10 @@ artefact_template: |
   ---
   name: stop-the-line
   description: >
-    Catches signal-suppression moves in PR diffs — any-casts, ts-ignore, skipped tests,
-    eslint-disable comments, deleted assertions. Returns the work for investigation, not
-    re-suppression. Traces to Eng Agentic Principle 6.
+    Catches signal-suppression moves in PR diffs — type suppressions, compiler directives,
+    test skips, static-analysis suppressions, deleted assertions. Stack-agnostic; examples
+    given for common stacks. Returns the work for investigation, not re-suppression.
+    Traces to Eng Agentic Principle 6.
   category: hook
   pack: engineering
   trigger_event: pr
@@ -131,11 +137,16 @@ artefact_template: |
   [One criterion per suppression type. No judgement words. Each criterion is binary:
   the pattern appears in the diff, or it does not.]
 
-  - `as any` or `: any` appears in added lines outside of comments and string literals.
-  - `// @ts-ignore` or `// @ts-nocheck` appears in added lines.
-  - `.skip(` appears in added lines in test files.
-  - `.only(` appears in added lines in test files.
-  - `eslint-disable` (any form) appears in added lines.
+  One criterion per pattern category. Each is binary — pattern present in diff or not.
+
+  - A type suppression (`<type-suppress-pattern>`, e.g. `as any` in TS) appears in
+    added lines outside comments and string literals.
+  - A compiler/analyser directive suppression (`<analyser-suppress-pattern>`, e.g.
+    `@ts-ignore` in TS) appears in added lines.
+  - A test-skip marker (`<skip-pattern>`, e.g. `.skip(` in Jest) appears in added lines
+    in test files.
+  - A static analysis suppression (`<lint-suppress-pattern>`, e.g. `eslint-disable` in
+    JS/TS) appears in added lines.
   - A test file's line count is lower in this PR than in the base branch while non-test
     changed files also exist in the PR.
 
@@ -163,10 +174,10 @@ artefact_template: |
   - Eng Universal Rule C4: CI stays green; a red build is the team's top priority
   ```
 common_rationalisations: |
-  "The `any` cast is temporary — I'll fix the type later."
-  Counter: temporary suppressions become permanent. The hook fires on every PR, not just on the
-  ones where you intend to leave it. Fix the type now or open a tracked follow-up before merging;
-  do not merge the suppression.
+  "The suppression is temporary — I'll fix it later."
+  Counter: temporary suppressions become permanent. The hook fires on every PR, not just the
+  ones where you intend to leave it. Fix the root cause now or open a tracked follow-up before
+  merging; do not merge the suppression.
 
   "I skipped the test because it was flaky, not because it was wrong."
   Counter: flaky tests are bugs (Eng Universal Rule C4). A flaky test belongs in a fix-or-delete
@@ -207,10 +218,10 @@ authoring_notes: |
      as a regex, AST pattern, or line-count comparison. If any criterion requires prose interpretation,
      move it out of scope or author a sub-agent instead.
 
-  2. `as any` detection in TypeScript has a known false-positive risk: the string "as any" can appear
-     in comments, strings, and docs. The criterion must specify "outside of comments and string
-     literals." The author should note this and provide a placeholder command rather than a specific
-     implementation — the hook is stack-agnostic.
+  2. Type-suppression detection has a known false-positive risk: the pattern string can appear in
+     comments, strings, and docs. The criterion must specify "outside of comments and string
+     literals." The author uses `<type-suppress-pattern>` as the placeholder and notes the
+     false-positive risk — the hook does not hard-code any language's specific syntax.
 
   3. `.only(` detection applies to Jest, Mocha, Vitest, and similar frameworks. The hook does not
      need to enumerate frameworks — `.only(` is the pattern; it fires regardless of which framework
