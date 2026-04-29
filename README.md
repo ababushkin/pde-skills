@@ -8,7 +8,15 @@ This pack is a soft fork of [addyosmani/agent-skills](https://github.com/addyosm
 
 ## How to size the work
 
-<!-- SIZE-THE-WORK RUBRIC — PLACEHOLDER: AWAITING OWNER CANONICAL WORDING -->
+Size the work before you start.
+
+| Size | Complexity | Changes expected | Input required from you |
+|------|------------|-----------------|------------------------|
+| Small | Single concern, clear scope | Few files, low risk of cascades | Little to none — agent executes, you review output |
+| Medium | Multiple concerns or uncertain scope | Moderate changes, some coordination | Occasional decisions; expect 1–2 rounds |
+| Large | High complexity, cross-cutting, or contested tradeoffs | Many changes, likely revisions | Heavy involvement — frame the problem, review drafts, resolve conflicts |
+
+Skills declare which sizes they apply to. When a skill fires on work that's larger than its declared size, stop and split the work first.
 
 ## What's in the pack
 
