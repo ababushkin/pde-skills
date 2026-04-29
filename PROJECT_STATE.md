@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-30 (M2 complete — M3 in progress)
+Last updated: 2026-04-30 (M3: three drafts in editorial)
 
 ---
 
@@ -24,13 +24,12 @@ Last updated: 2026-04-30 (M2 complete — M3 in progress)
 | # | Artefact | Category | Track | Status | Branch | Notes |
 |---|----------|----------|-------|--------|--------|-------|
 | 1 | `PRODUCT_RULES.md` | rules | product | accepted | — | merged PR #2 |
-| 2 | `idea-triage` | skill | product | pending | — | brief drafting in progress |
+| 2 | `idea-triage` | skill | product | editorial | worktree-agent-a072477db256def6f | draft v1 committed |
 | 3 | `eng-principles-universal.md` | rules | engineering | accepted | — | merged PR #1 |
 | 4 | `eng-principles-agentic.md` | rules | engineering | accepted | — | merged PR #3 |
-| 5 | `design-doc` | skill | engineering | pending | — | brief drafting in progress |
-| 5 | `design-doc` | skill | engineering | pending | — | sequential after #4 |
+| 5 | `design-doc` | skill | engineering | editorial | worktree-agent-a6901afbfb8e91d15 | draft v1 committed |
 | 6 | `incremental-implementation` | skill | engineering | pending | — | sequential after #5 |
-| 7 | `stop-the-line` | hook | hook | pending | — | brief drafting in progress; gated on #4 now satisfied |
+| 7 | `stop-the-line` | hook | hook | editorial | worktree-agent-a46329fb876c35835 | draft v1 committed |
 | 8 | README routing section | meta | meta | pending | — | owner work, M6 |
 
 ---
