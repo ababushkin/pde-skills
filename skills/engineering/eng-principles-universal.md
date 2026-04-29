@@ -32,9 +32,9 @@ Martin Fowler's definition of architecture is the cleanest one available: the de
 
 ### 4. Assumptions must be named; risky ones must be tested before committing
 
-Every design contains implicit bets — about load patterns, failure modes, third-party SLAs, data shape, schema stability, team capacity, adoption rates. Hunt & Thomas's *The Pragmatic Programmer* prescribes tracer bullets: real code that exercises the riskiest path early, to discover what you don't know. Alistair Cockburn's walking skeleton makes the same point — a minimal end-to-end implementation that touches every real component is more valuable than a detailed plan that assumes them away. This is the direct engineering analogue of the roadmap's Confidence Meter: a design whose assumptions are unverified is a low-confidence design, no matter how senior the person proposing it.
+Every design contains implicit bets — about load patterns, failure modes, third-party SLAs, data shape, schema stability, team capacity, adoption rates. Hunt & Thomas's *The Pragmatic Programmer* prescribes tracer bullets: real code that exercises the riskiest path early. Alistair Cockburn's walking skeleton makes the same point — a minimal end-to-end implementation that touches every real component is more valuable than a detailed plan that assumes them away. This is the direct engineering analogue of the roadmap's Confidence Meter: a design whose assumptions are unverified is a low-confidence design, no matter how senior the person proposing it.
 
-**Implication:** Before committing engineering time to a large build, identify the three riskiest assumptions and discharge them with a time-boxed spike. If the spike invalidates them, reshape or kill — don't proceed on hope.
+**Implication:** Before committing engineering time to a large build, identify the three riskiest assumptions and test them with a time-boxed spike. If the spike invalidates them, reshape or kill — don't proceed on hope.
 
 ### 5. Code is a liability; the best change is often the one you don't make
 
