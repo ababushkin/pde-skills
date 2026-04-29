@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-29
+Last updated: 2026-04-29 (M2 in progress — all 3 root rules files at owner-review)
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-04-29
 
 | Milestone | Description | Status |
 |-----------|-------------|--------|
-| M1 | Project setup complete. Repo initialised, anatomy specs accepted, `PROJECT_STATE.md` initialised. | in progress |
+| M1 | Project setup complete. Repo initialised, anatomy specs accepted, `PROJECT_STATE.md` initialised. | complete |
 | M2 | Root rules files accepted. `PRODUCT_RULES.md`, `eng-principles-universal.md`, `eng-principles-agentic.md` merged. | pending |
 | M3 | Now complete. All 8 Now artefacts accepted, coverage matrix audit done. | pending |
 | M4 | References complete. All 6 reference files merged. | pending |
@@ -23,10 +23,10 @@ Last updated: 2026-04-29
 
 | # | Artefact | Category | Track | Status | Branch | Notes |
 |---|----------|----------|-------|--------|--------|-------|
-| 1 | `PRODUCT_RULES.md` | rules | product | pending | — | |
-| 2 | `idea-triage` | skill | product | pending | — | sequential after #1 |
-| 3 | `eng-principles-universal.md` | rules | engineering | pending | — | |
-| 4 | `eng-principles-agentic.md` | rules | engineering | pending | — | sequential after #3 |
+| 1 | `PRODUCT_RULES.md` | rules | product | owner-review | rules/product-rules | PR #2 open |
+| 2 | `idea-triage` | skill | product | pending | — | sequential after #1 accepted |
+| 3 | `eng-principles-universal.md` | rules | engineering | owner-review | rules/eng-principles-universal | PR #1 open |
+| 4 | `eng-principles-agentic.md` | rules | engineering | owner-review | rules/eng-principles-agentic | PR #3 open |
 | 5 | `design-doc` | skill | engineering | pending | — | sequential after #4 |
 | 6 | `incremental-implementation` | skill | engineering | pending | — | sequential after #5 |
 | 7 | `stop-the-line` | hook | hook | pending | — | gated on #4 at draft stage |
@@ -70,6 +70,7 @@ Last updated: 2026-04-29
 | Status | Meaning |
 |--------|---------|
 | `pending` | Not yet started |
+| `pending-review` | Draft exists; skipped authoring (fast-path); queued for editor |
 | `brief-ready` | Brief written and committed |
 | `in-progress` | Author has the draft |
 | `editorial` | Editor reviewing |

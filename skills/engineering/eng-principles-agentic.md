@@ -44,7 +44,7 @@ Agents will report success based on syntax. "It compiled," "tests ran," "no erro
 
 ### 6. Stop the line on first failure; never silence the signal
 
-Failing tests get changed, type errors get `any`'d, lint failures get suppressed, assertions get deleted. The default response to a failing signal is investigation, not silencing. This deserves its own principle because the failure mode is so consistent: agents are optimised to make errors disappear, and silencing achieves that faster than fixing. The line between "fix the test that's wrong" and "delete the test that's correct" is a judgement call humans make routinely; agents collapse it almost every time without a hard rule.
+Failing tests get changed, type errors get `any`'d, lint failures get suppressed, assertions get deleted. The default response to a failing signal is investigation, not silencing. This deserves its own principle because the failure mode is so consistent: agents are gradient-descended toward "make the error go away," and silencing the error makes it go away faster than fixing it. The line between "fix the test that's wrong" and "delete the test that's correct" is a judgement call humans make routinely; agents collapse it almost every time without a hard rule.
 
 **Implication:** Casts to `any`, `// @ts-ignore`, `.skip`, suppression of lint warnings, and deletion of assertions are flagged at the PR level by the `stop-the-line` hook (Now). When the hook fires, the agent's work is sent back for investigation, not for re-suppression.
 
