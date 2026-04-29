@@ -225,7 +225,7 @@ The design doc passes review when:
 ## References
 
 - `skills/engineering/eng-principles-universal.md` — P2, Rule A1, A2, A4, A5, A6, B2, B3
-- `skills/engineering/eng-principles-agentic.md` — P1, P3
+- `skills/engineering/eng-principles-agentic.md` — P1, P3, P5
 - Larson, Will — "Staff Engineer" (trigger conditions for design docs)
 - Nygard, Michael — "Release It!" (operability; ADR format)
 - Cockburn, Alistair — walking skeleton (Rule B2 source)
