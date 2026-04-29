@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-29 (M1 complete)
+Last updated: 2026-04-29 (M2 in progress)
 
 ---
 
@@ -23,10 +23,10 @@ Last updated: 2026-04-29 (M1 complete)
 
 | # | Artefact | Category | Track | Status | Branch | Notes |
 |---|----------|----------|-------|--------|--------|-------|
-| 1 | `PRODUCT_RULES.md` | rules | product | pending | — | |
-| 2 | `idea-triage` | skill | product | pending | — | sequential after #1 |
-| 3 | `eng-principles-universal.md` | rules | engineering | pending-review | — | draft exists at skills/engineering/; fast-path: editor → consistency → sign-off |
-| 4 | `eng-principles-agentic.md` | rules | engineering | pending-review | — | draft exists at skills/engineering/; fast-path: editor → consistency → sign-off; sequential after #3 |
+| 1 | `PRODUCT_RULES.md` | rules | product | owner-review | rules/product-rules | PR #2 open |
+| 2 | `idea-triage` | skill | product | pending | — | sequential after #1 accepted |
+| 3 | `eng-principles-universal.md` | rules | engineering | owner-review | rules/eng-principles-universal | PR #1 open |
+| 4 | `eng-principles-agentic.md` | rules | engineering | editorial | rules/eng-principles-agentic | accept-with-notes; author fix pending |
 | 5 | `design-doc` | skill | engineering | pending | — | sequential after #4 |
 | 6 | `incremental-implementation` | skill | engineering | pending | — | sequential after #5 |
 | 7 | `stop-the-line` | hook | hook | pending | — | gated on #4 at draft stage |
