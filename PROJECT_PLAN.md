@@ -1,4 +1,4 @@
-# pde-skills — Project Plan v1.5
+# pde-skills — Project Plan v1.6
 
 **Owner:** Anton Babushkin (`ababushkin`)
 **Repo:** `pde-skills` (public, MIT licensed)
@@ -148,6 +148,8 @@ See:
 
 Root rules files (`PRODUCT_RULES.md`, `eng-principles-universal.md`, `eng-principles-agentic.md`) mirror the shape of their source principles documents.
 
+The v0.1 rules files are direct conversions of existing principles documents (`roadmap_principles`, `eng_principles`) into pack voice and structure, not original authoring work. The substantive principles are settled. Authoring effort is voice-matching, the tier-1/tier-2 carve-out for the engineering files, and structural alignment with the rest of the pack. These artefacts take the fast-path workflow (see §7).
+
 ### 5.2 Voice and register
 
 - Direct, dense, opinionated. No hedging language.
@@ -207,7 +209,7 @@ Five agent roles. Defined by responsibility, not by which model runs them. Imple
 
 ### 6.2 Author (2 agents in parallel across disciplines)
 
-- Reads brief in `_workspace/brief.md`.
+- Reads the brief in `_workspace/brief.md` if one exists. For artefacts whose substance is already settled (rules files derived from existing principles documents, or any artefact where a brief would be theatre), reads the relevant sections of `PROJECT_PLAN.md`, the source principles documents, and prior conversation context directly. The supervisor flags which path applies at dispatch.
 - Reads relevant source documents and prior accepted artefacts.
 - Reads the relevant anatomy spec under `docs/`.
 - For derivative or adjacent artefacts: reads predecessor in addy's pack.
@@ -274,8 +276,13 @@ Filesystem-as-message-bus, git-as-state-machine.
 
 ## 7. Workflow per artefact
 
+Two paths. The supervisor decides at dispatch which applies.
+
+**Default path** — substance not yet settled. Most skills, hooks, and sub-agents.
+
 ```
-1. BRIEF       owner+supervisor write _workspace/brief.md, commit
+1. BRIEF       owner approves brief drafted by agent (substance from owner,
+                 drafting by agent — see §10), commit
 2. AUTHOR v1   author reads brief (and predecessor if derivative/adjacent),
                  writes draft-v1.md, commits
 3. EDITOR      editor reviews, writes editor-notes.md, commits
@@ -289,7 +296,21 @@ Filesystem-as-message-bus, git-as-state-machine.
 7. SIGN-OFF    owner reviews PR, merges
 ```
 
-Average rounds: 2 author + 1 editor + 1 consistency + 1 owner = 5 turns.
+**Fast-path** — substance already settled. v0.1 rules files (direct conversions of existing principles documents) and any artefact whose content was produced during scoping conversations.
+
+```
+2. AUTHOR v1   author reads source principles + plan + prior conversation,
+                 writes draft-v1.md, commits
+3. EDITOR      → as default
+4. CONSISTENCY → as default
+5. PROMOTE     → as default
+6. PR          → as default
+7. SIGN-OFF    → as default
+```
+
+The fast-path skips step 1 (BRIEF) only. Editorial review, consistency check, promote, PR, and sign-off all still apply — quality gates aren't conditional on whether a brief was needed.
+
+Average rounds: 2 author + 1 editor + 1 consistency + 1 owner = 5 turns (default path; fast-path is the same minus the brief step).
 
 ---
 
@@ -339,9 +360,13 @@ Authored only on promotion to Now. Each promotion gets a written decision (crite
 
 ## 10. Briefs
 
-Each Now artefact gets its own brief written before authoring begins, just-in-time as the artefact enters the queue. Format: see `docs/brief-template.md`.
+Most Now artefacts get a brief written before authoring begins. Format: see `docs/brief-template.md`.
 
-Briefs for Next items are written only at promotion time. Owner authors briefs.
+Briefs are agent-drafted from the plan, the triage records, and the source principles documents; owner reviews and approves. Owner contributes substance — decisions, gotchas, scope clarifications, anything specific the agent can't infer from the plan and source materials. Owner does not draft the YAML or write the prose. The pattern is conversational: owner tells the agent (or supervisor) what's important in plain language; agent drafts the brief in template format; owner reviews and either approves or corrects.
+
+Briefs are skipped for artefacts whose substance is already settled — typically v0.1 rules files derived from existing principles documents (`PRODUCT_RULES.md`, `eng-principles-universal.md`, `eng-principles-agentic.md`), or artefacts whose content was produced during scoping conversations. The supervisor decides at dispatch whether a brief is needed (default path) or skipped (fast-path) — see §7.
+
+Briefs for Next items are drafted only at promotion time, not pre-emptively.
 
 ---
 
