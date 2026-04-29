@@ -50,7 +50,7 @@ Failing tests get changed, type errors get `any`'d, lint failures get suppressed
 
 ### 7. Memory lives in artefacts, not in agents
 
-Agents have no continuity between sessions. The ADR, the design doc, the postmortem, the README are how reasoning persists. Doc drift is fatal in agentic contexts in a way it isn't in human-only ones, because there's no human carrying the implicit knowledge from one session to the next. When the next agent reads the codebase, what it sees is the artefacts; what it doesn't see is anything not written down. Universal Principle 6's Rule D3 says ADRs are living documents that get superseded rather than ignored. In agentic contexts, that rule is load-bearing — silent drift means the next agent has the wrong model and confidently produces wrong work from it.
+Agents have no continuity between sessions. The ADR, the design doc, the postmortem, the README are how reasoning persists. Doc drift is fatal in agentic contexts in a way it isn't in human-only ones, because there's no human carrying the implicit knowledge from one session to the next. When the next agent reads the codebase, what it sees is the artefacts; what it doesn't see is anything not written down. Rule D3 in eng-principles-universal.md says ADRs are living documents that get superseded rather than ignored. In agentic contexts, that rule is load-bearing — silent drift means the next agent has the wrong model and confidently produces wrong work from it.
 
 **Implication:** Every architectural change updates or supersedes its corresponding ADR or design doc in the same PR. The hook `artefact-pair` (Later) flags code changes without doc updates. Skills that produce design artefacts treat the artefact as the deliverable, not the code.
 
