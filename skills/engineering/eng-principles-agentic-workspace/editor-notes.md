@@ -89,3 +89,9 @@ None. The three fixes are surgical — no surrounding text was disturbed, no new
 
 ### Final verdict rationale
 All three required fixes are correctly applied and no new issues were introduced, so the document is ready to advance to the consistency check stage.
+
+## Confirmation pass (v3)
+
+**Verdict:** accept
+
+Fix confirmed: "Rule D3 in eng-principles-universal.md" — accurate and plain. No other content changed.
