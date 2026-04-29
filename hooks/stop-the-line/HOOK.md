@@ -33,7 +33,7 @@ Agents are optimised to make errors disappear. Silencing a failing signal — su
 
 ## Trigger event
 
-Fires on PR open and PR update. Input is the PR diff: added lines (`+` lines), file paths, and test-file line counts before and after.
+Fires on PR open and PR update. Input is the PR diff: added lines (`+` lines), file paths, and test-file line counts before and after. The hook is non-blocking by design: it surfaces findings and returns the work for investigation; it does not veto the PR automatically.
 
 ## Check
 
