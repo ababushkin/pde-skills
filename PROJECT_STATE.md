@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-29 (M2 in progress)
+Last updated: 2026-04-29 (M2 in progress — all 3 root rules files at owner-review)
 
 ---
 
@@ -26,7 +26,7 @@ Last updated: 2026-04-29 (M2 in progress)
 | 1 | `PRODUCT_RULES.md` | rules | product | owner-review | rules/product-rules | PR #2 open |
 | 2 | `idea-triage` | skill | product | pending | — | sequential after #1 accepted |
 | 3 | `eng-principles-universal.md` | rules | engineering | owner-review | rules/eng-principles-universal | PR #1 open |
-| 4 | `eng-principles-agentic.md` | rules | engineering | editorial | rules/eng-principles-agentic | accept-with-notes; author fix pending |
+| 4 | `eng-principles-agentic.md` | rules | engineering | owner-review | rules/eng-principles-agentic | PR #3 open |
 | 5 | `design-doc` | skill | engineering | pending | — | sequential after #4 |
 | 6 | `incremental-implementation` | skill | engineering | pending | — | sequential after #5 |
 | 7 | `stop-the-line` | hook | hook | pending | — | gated on #4 at draft stage |
