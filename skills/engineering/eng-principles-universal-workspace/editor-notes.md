@@ -1,6 +1,6 @@
 # Editor notes — eng-principles-universal.md
 
-**Verdict:** accept with notes
+**Verdict:** accept
 
 ## Verdict rationale
 
@@ -64,3 +64,11 @@ Clean. No context-window language, no hallucination language, no agent-completio
 2. (Optional, author's discretion) Trim trailing clause in Principle 4 body: "…to discover what you don't know" adds nothing. Cutting it tightens the sentence.
 
 3. (Optional, author's discretion) Smooth the inline lettering in Principle 3's implication: "(a) whether it's reversible and (b) how expensive the reversal is" reads slightly more as a list than the prose style of other implications. A recast like "name whether it's reversible and how expensive the reversal is" flows better.
+
+---
+
+## Confirmation pass
+
+**Verdict:** accept
+
+Both changes correctly applied. The Principle 4 implication now reads "test them with a time-boxed spike" — the jargon-as-rigor fix is in place and the wording is clean. The tracer-bullets sentence in the Principle 4 body ends at "real code that exercises the riskiest path early" with the trailing clause removed, tightening the sentence without any loss of meaning. No other content changed. Ready for consistency check.
