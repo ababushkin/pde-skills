@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-30 (M3: three drafts in consistency check)
+Last updated: 2026-04-30 (M3: three drafts at owner-review)
 
 ---
 
@@ -24,12 +24,12 @@ Last updated: 2026-04-30 (M3: three drafts in consistency check)
 | # | Artefact | Category | Track | Status | Branch | Notes |
 |---|----------|----------|-------|--------|--------|-------|
 | 1 | `PRODUCT_RULES.md` | rules | product | accepted | — | merged PR #2 |
-| 2 | `idea-triage` | skill | product | consistency | worktree-agent-a072477db256def6f | editor accepted, no changes |
+| 2 | `idea-triage` | skill | product | owner-review | worktree-agent-a072477db256def6f | PR pending |
 | 3 | `eng-principles-universal.md` | rules | engineering | accepted | — | merged PR #1 |
 | 4 | `eng-principles-agentic.md` | rules | engineering | accepted | — | merged PR #3 |
-| 5 | `design-doc` | skill | engineering | consistency | worktree-agent-a6901afbfb8e91d15 | editor added P5 to frontmatter |
+| 5 | `design-doc` | skill | engineering | owner-review | worktree-agent-a6901afbfb8e91d15 | PR pending |
 | 6 | `incremental-implementation` | skill | engineering | pending | — | sequential after #5 |
-| 7 | `stop-the-line` | hook | hook | consistency | worktree-agent-a46329fb876c35835 | editor added non-blocking statement |
+| 7 | `stop-the-line` | hook | hook | owner-review | worktree-agent-a46329fb876c35835 | PR pending |
 | 8 | README routing section | meta | meta | pending | — | owner work, M6 |
 
 ---
