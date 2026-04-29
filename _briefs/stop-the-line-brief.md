@@ -18,7 +18,7 @@ principles_implemented:
   - source: eng-agentic
     id: P6
     bucket: hook
-    note: Mechanically catches the suppression moves agents make instead of investigating failures — any-cast, ts-ignore, skip, eslint-disable, deleted assertions
+    note: Mechanically catches the four suppression moves agents make instead of investigating failures — type casts, compiler directives, test skips, static-analysis suppressions, deleted assertions
   - source: eng-universal
     id: P8
     bucket: embedded
@@ -29,36 +29,41 @@ principles_implemented:
     note: Adjacent — CI staying green is the goal; silencing signals is the failure mode this hook guards against
 triage_record_ref: "PROJECT_PLAN.md §11.1 row #7 — confidence 6; evidence: felt-pain evidence (any-cast, .skip, lint suppression); deterministic checks"
 purpose: >
-  Agents are optimised to make errors disappear. Silencing a failing signal — casting to `any`,
-  adding `@ts-ignore`, skipping a test, suppressing a lint warning, deleting an assertion —
-  achieves that goal faster than investigating the root cause. This hook catches those moves at
-  the PR level, before they merge. It reads the diff, not the full codebase, so it flags only
-  new suppressions introduced by the current change, not pre-existing ones. When it fires, the
-  work goes back for investigation — not for re-suppression. The check is deterministic: each
-  pattern either appears in the diff or it does not. No judgement is required of the agent running
-  the hook. This is the pack's first hook, establishing the failure-mode-detection pattern that
-  `small-batch` and `evidence-claim` will follow.
+  Agents are optimised to make errors disappear. Silencing a failing signal — suppressing
+  the type system, adding a compiler override, skipping a test, suppressing a static analysis
+  warning, deleting an assertion — achieves that goal faster than investigating the root cause.
+  This hook catches those moves at the PR level, before they merge. It reads the diff, not
+  the full codebase, so it flags only new suppressions introduced by the current change, not
+  pre-existing ones. When it fires, the work goes back for investigation — not for
+  re-suppression. The check is deterministic: each pattern either appears in the diff or it
+  does not. No judgement is required of the agent running the hook. This is the pack's first
+  hook, establishing the failure-mode-detection pattern that `small-batch` and `evidence-claim`
+  will follow.
 scope:
   in: |
-    Four pattern categories, stack-agnostic. Each category has a named example; the hook body
-    supplies `<suppress-pattern>` placeholders for stack-specific implementations.
+    Five pattern categories, expressed as placeholders. The hook body gives one or two
+    per-stack examples for illustration only — the criteria themselves are stack-agnostic.
 
-    - Type suppressions added in the diff: unsafe casts that silence the type system
-      (e.g. `as any` / `: any` in TypeScript; `# type: ignore` in Python; `@SuppressWarnings` in Java)
-    - Compiler/analyser directives that suppress errors added in the diff
-      (e.g. `// @ts-ignore`, `// @ts-nocheck` in TypeScript; `//nolint` in Go; `[SuppressMessage]` in C#)
-    - Test-skip markers added in test files in the diff
-      (e.g. `.skip(` in Jest/Mocha/Vitest; `@pytest.mark.skip` in Python; `t.Skip()` in Go)
-    - Static analysis suppressions added in the diff
-      (e.g. `eslint-disable` in JS/TS; `# noqa` in Python; `#[allow(...)]` in Rust)
-    - Assertion deletions: test file line count drops while non-test code changes exist in the same PR
-      (language-agnostic; line-count comparison)
+    - Type suppressions added in the diff: `<type-suppress-pattern>` — unsafe casts that
+      silence the type checker
+    - Compiler/analyser directives that suppress errors added in the diff:
+      `<compiler-suppress-pattern>` — inline comments or annotations that tell the compiler
+      to ignore an error on the next line or block
+    - Test-skip markers added in test files in the diff: `<test-skip-pattern>` — markers
+      that cause a test to be excluded from the run
+    - Static analysis suppressions added in the diff: `<lint-suppress-pattern>` — inline
+      comments or annotations that silence a linter or static analyser warning
+    - Assertion deletions: test file line count drops while non-test code changes exist in
+      the same PR (language-agnostic; line-count comparison)
   out: |
     - PR size (line count, branch age) — covered by `small-batch` (Next)
     - Completion-claim evidence — covered by `evidence-claim` (Next)
     - Pre-existing suppressions in the codebase — this hook flags new additions in the diff only
-    - Whether the suppressed signal was correct (i.e. was the skipped test testing the right thing) — that is a sub-agent judgement call, not a mechanical check
-    - Test-isolation markers (e.g. `.only(`) — these silence other tests rather than suppress a signal; author decides whether to include in scope or keep as advisory note
+    - Whether the suppressed signal was correct (i.e. was the skipped test testing the right
+      thing) — that is a sub-agent judgement call, not a mechanical check
+    - Test-isolation markers (`<test-only-pattern>`) — these silence other tests rather than
+      suppress a failing signal; author decides whether to include as a sixth criterion or note
+      as advisory
 size_triggers:
   fires_for: "Any PR that includes a diff — there is no size floor. A one-line change that adds a suppression pattern fires the hook."
   does_not_fire_for: "PRs with no diff (empty commits, tag-only changes). Pre-existing suppressions not touched by the diff do not re-trigger the hook."
@@ -73,14 +78,15 @@ outputs:
   artefact_name: HOOK.md
 workflow_outline: |
   1. RECEIVE diff — the hook is triggered on PR open or update; input is the PR diff
-  2. SCAN added lines for suppression patterns (stack-agnostic categories; examples in parens):
-     - Gate A: type suppression added (`as any` in TS; `# type: ignore` in Python; `@SuppressWarnings` in Java; `<suppress-type-pattern>`) → FAIL with pattern, file, line
-     - Gate B: compiler/analyser directive suppression added (`@ts-ignore`/`@ts-nocheck` in TS; `//nolint` in Go; `<suppress-analyser-pattern>`) → FAIL with pattern, file, line
-     - Gate C: test-skip marker added in test file (`.skip(` in Jest/Vitest; `@pytest.mark.skip`; `t.Skip()`; `<skip-pattern>`) → FAIL with pattern, file, line
-     - Gate D: static analysis suppression added (`eslint-disable` in JS/TS; `# noqa`; `#[allow(...)]`; `<lint-suppress-pattern>`) → FAIL with pattern, file, line
+  2. SCAN added lines for suppression patterns:
+     - Gate A: `<type-suppress-pattern>` in added lines outside comments and string literals → FAIL with pattern, file, line
+     - Gate B: `<compiler-suppress-pattern>` in added lines → FAIL with pattern, file, line
+     - Gate C: `<test-skip-pattern>` in added lines in test files → FAIL with pattern, file, line
+     - Gate D: `<lint-suppress-pattern>` in added lines → FAIL with pattern, file, line
      - Gate E: test file line count drops while non-test changed files exist → FAIL with file, before/after count
   3. COLLECT all findings across all gates
-  4. REPORT findings — if any gate fired: list each finding (pattern, file, line); state that the work is returned for investigation, not re-suppression; do not block the PR automatically
+  4. REPORT findings — if any gate fired: list each finding (pattern, file, line); state that
+     the work is returned for investigation, not re-suppression; do not block the PR automatically
   5. PASS — if no gate fired, report clean and allow the PR to proceed
 
   The hook is non-blocking by design. It surfaces findings and returns the work; it does not veto the PR.
@@ -128,25 +134,19 @@ artefact_template: |
 
   ## Check
 
-  [What the hook scans — added lines only, not the full file. Patterns listed precisely,
-  with placeholder commands for stack-specific implementations. Test-file detection note.
-  Assertion-deletion check described separately (line-count comparison, not regex).]
+  [What the hook scans — added lines only, not the full file. Patterns expressed as
+  `<placeholder>` with per-stack examples in parentheses for illustration.
+  Test-file detection note. Assertion-deletion check described separately (line-count
+  comparison, not regex).]
 
   ## Fail criteria
 
-  [One criterion per suppression type. No judgement words. Each criterion is binary:
-  the pattern appears in the diff, or it does not.]
-
   One criterion per pattern category. Each is binary — pattern present in diff or not.
 
-  - A type suppression (`<type-suppress-pattern>`, e.g. `as any` in TS) appears in
-    added lines outside comments and string literals.
-  - A compiler/analyser directive suppression (`<analyser-suppress-pattern>`, e.g.
-    `@ts-ignore` in TS) appears in added lines.
-  - A test-skip marker (`<skip-pattern>`, e.g. `.skip(` in Jest) appears in added lines
-    in test files.
-  - A static analysis suppression (`<lint-suppress-pattern>`, e.g. `eslint-disable` in
-    JS/TS) appears in added lines.
+  - `<type-suppress-pattern>` appears in added lines outside comments and string literals.
+  - `<compiler-suppress-pattern>` appears in added lines.
+  - `<test-skip-pattern>` appears in added lines in test files.
+  - `<lint-suppress-pattern>` appears in added lines.
   - A test file's line count is lower in this PR than in the base branch while non-test
     changed files also exist in the PR.
 
@@ -184,19 +184,19 @@ common_rationalisations: |
   decision with a tracked issue, not silently skipped. The hook fires regardless — investigate and
   decide explicitly.
 
-  "The eslint rule is wrong for this case."
-  Counter: if the rule is wrong for a case, configure the rule to exclude that case in the project
-  configuration — don't suppress it inline. Inline suppression hides the exception from the rule's
-  scope and makes future audits impossible.
+  "The static analysis rule is wrong for this case."
+  Counter: if the rule is wrong for a case, configure the rule to exclude that case at the project
+  level — don't suppress it inline. Inline suppression hides the exception from the rule's scope
+  and makes future audits impossible.
 
   "The test I deleted was testing the wrong thing."
-  Counter: this is exactly the judgement call the hook is designed to surface. If the test was wrong,
-  document why it was wrong and what replaces it. A deletion without documentation is indistinguishable
-  from a deletion to silence a failure.
+  Counter: this is exactly the judgement call the hook is designed to surface. If the test was
+  wrong, document why it was wrong and what replaces it. A deletion without documentation is
+  indistinguishable from a deletion to silence a failure.
 
   "This is a small PR; the pattern isn't a real risk here."
-  Counter: the hook has no size floor by design. Small PRs can carry the same failure modes as large
-  ones. The cost of investigation is low; the cost of a suppression that ships is not.
+  Counter: the hook has no size floor by design. Small PRs can carry the same failure modes as
+  large ones. The cost of investigation is low; the cost of a suppression that ships is not.
 references: |
   - skills/engineering/eng-principles-agentic.md — Principle 6 (primary source; the implication
     paragraph names this hook by name)
@@ -204,7 +204,6 @@ references: |
   - skills/engineering/eng-principles-universal.md — Principle 8 (small batches; adjacent, referenced
     in Out of scope boundary with small-batch hook)
   - docs/hook-anatomy.md — authoring spec for HOOK.md files
-  - docs/brief-template.md — this brief's format
 dependencies:
   prerequisite_artefacts: |
     - skills/engineering/eng-principles-agentic.md — must be at draft stage before this hook is
@@ -218,36 +217,34 @@ authoring_notes: |
      as a regex, AST pattern, or line-count comparison. If any criterion requires prose interpretation,
      move it out of scope or author a sub-agent instead.
 
-  2. Type-suppression detection has a known false-positive risk: the pattern string can appear in
+  2. The hook is stack-agnostic. Express all fail criteria using `<placeholder>` syntax. In the
+     Check section, give one or two per-stack examples in parentheses — enough to make the category
+     concrete — but the criteria themselves never name a specific language or tool. The author's
+     job is to describe the pattern category, not to enumerate every stack's variant.
+
+  3. Type-suppression detection has a known false-positive risk: the pattern string can appear in
      comments, strings, and docs. The criterion must specify "outside of comments and string
-     literals." The author uses `<type-suppress-pattern>` as the placeholder and notes the
-     false-positive risk — the hook does not hard-code any language's specific syntax.
+     literals." Note this in the Check section; it applies regardless of which stack's syntax
+     the implementer uses.
 
-  3. `.only(` detection applies to Jest, Mocha, Vitest, and similar frameworks. The hook does not
-     need to enumerate frameworks — `.only(` is the pattern; it fires regardless of which framework
-     uses it.
-
-  4. The assertion-deletion check (line count) is the least precise of the six criteria and carries
-     the highest false-positive risk (comments removed, imports consolidated, etc.). The author should
-     flag this in the hook body and note that this criterion is advisory: findings should be listed
-     but the agent is told to weigh the context. This is the one criterion that approaches the
-     judgement boundary — keep the language cautious.
+  4. The assertion-deletion check (line count) is the least precise criterion and carries the
+     highest false-positive risk (comments removed, imports consolidated, etc.). Flag this in
+     the hook body and label the criterion advisory: findings should be listed but the agent is
+     told to weigh the context. This is the one criterion that approaches the judgement boundary.
 
   5. The hook is non-blocking. This is a design decision, not a concession. The implication of
-     Agentic P6 is that the work goes back for investigation; automatic PR veto is not in scope for
-     v0.1 (that would require runtime integration, which is a v0.2 non-goal per PROJECT_PLAN.md §2).
-     The hook ships as a spec; integration is deferred.
+     Agentic P6 is that the work goes back for investigation; automatic PR veto is not in scope
+     for v0.1 (runtime integration is a v0.2 non-goal per PROJECT_PLAN.md §2). The hook ships
+     as a spec; integration is deferred.
 
-  6. Do not add a "severity" or "warning vs. error" distinction. All six criteria are the same
-     severity — each one signals a potential silenced failure. Tiering introduces the rationalisation
+  6. Do not add a "severity" or "warning vs. error" distinction. All criteria are the same
+     severity — each signals a potential silenced failure. Tiering introduces the rationalisation
      "this is only a warning" and weakens the rule.
 
-  7. The voice in the "On fail" section should match the directness of Principle 6 itself. Avoid
-     softening language ("consider investigating", "you may want to check"). The instruction is:
-     investigate the flagged signal. Full stop.
+  7. The voice in the "On fail" section must match the directness of Principle 6. No softening:
+     not "consider investigating," not "you may want to check." The instruction is: investigate
+     the flagged signal. Full stop.
 
-  8. Line target is 60–100. The hook anatomy is dense by design — Purpose, Trigger, Check, Fail
-     criteria, Pass criteria, On fail, Out of scope, References. The content above maps cleanly to
-     that structure. If the draft exceeds 100 lines, the author has inflated either the Check section
-     (too much implementation detail — use placeholders) or the On fail section (too much prose —
-     cut to instructions). Editor will push back.
+  8. Line target is 60–100. If the draft exceeds 100 lines, the Check section has too much
+     implementation detail (use placeholders) or the On fail section has too much prose (cut to
+     instructions). Editor will push back.
