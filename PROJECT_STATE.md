@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-30 (References phase complete; promotion review and ship next)
+Last updated: 2026-04-30 (M5 complete: 3 promotions; README done; tag v0.1.0 next)
 
 ---
 
@@ -14,7 +14,7 @@ Last updated: 2026-04-30 (References phase complete; promotion review and ship n
 | M2 | Root rules files accepted. `PRODUCT_RULES.md`, `eng-principles-universal.md`, `eng-principles-agentic.md` merged. | complete |
 | M3 | Now complete. All 8 Now artefacts accepted, coverage matrix audit done. | complete |
 | M4 | References complete. All 6 reference files merged. | complete |
-| M5 | Promotion review (optional). Re-evaluate Next items against current evidence. | pending |
+| M5 | Promotion review (optional). Re-evaluate Next items against current evidence. | complete |
 | M6 | Ship. v0.1.0 tagged, project closed. | pending |
 
 ---
@@ -30,7 +30,10 @@ Last updated: 2026-04-30 (References phase complete; promotion review and ship n
 | 5 | `design-doc` | skill | engineering | accepted | — | merged |
 | 6 | `incremental-implementation` | skill | engineering | accepted | — | merged to main |
 | 7 | `stop-the-line` | hook | hook | accepted | — | merged |
-| 8 | README routing section | meta | meta | pending | — | owner work, M6 |
+| 8 | README | meta | meta | accepted | — | rewritten M6 |
+| 9 | `using-this-pack` | skill | meta | accepted | — | promoted from Next |
+| 10 | `planning-and-task-breakdown` | skill | engineering | accepted | — | promoted from Next |
+| 11 | `roadmap-shape` | skill | product | accepted | — | promoted from Next |
 
 ---
 
@@ -38,9 +41,6 @@ Last updated: 2026-04-30 (References phase complete; promotion review and ship n
 
 | # | Artefact | Category | Status | Promotion criteria |
 |---|----------|----------|--------|--------------------|
-| 9 | `using-this-pack` | skill | pending | capacity opens, pack grows |
-| 10 | `planning-and-task-breakdown` | skill | pending | capacity opens |
-| 11 | `roadmap-shape` | skill | pending | capacity opens, bootstrapping argument strengthened |
 | 12 | `small-batch` | hook | pending | after `stop-the-line` proves failure-mode-detection pattern |
 | 13 | `evidence-claim` | hook | pending | after `stop-the-line` proves failure-mode-detection pattern |
 | 14 | `problem-first-reviewer` | sub-agent | pending | when `design-doc` usage shows need |
