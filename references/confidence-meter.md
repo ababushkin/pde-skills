@@ -1,6 +1,8 @@
 ---
 name: confidence-meter
-description: Calibration scale for evidence quality, used when scoring the Confidence dimension in ICE. Source: Itamar Gilad.
+description: >
+  Calibration scale for evidence quality, used when scoring the Confidence dimension in ICE.
+  Source: Itamar Gilad.
 type: reference
 cited_by:
   - skills/product/idea-triage/SKILL.md

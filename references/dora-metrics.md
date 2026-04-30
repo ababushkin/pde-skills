@@ -1,6 +1,9 @@
 ---
 name: dora-metrics
-description: The four DORA metrics for engineering delivery performance — deployment frequency, lead time for changes, change failure rate, and time to restore. Source: Forsgren, Humble, Kim — "Accelerate" (2018). Used in post-launch impact review and deploy skills.
+description: >
+  The four DORA metrics for engineering delivery performance — deployment frequency, lead time
+  for changes, change failure rate, and time to restore. Source: Forsgren, Humble, Kim —
+  "Accelerate" (2018). Used in post-launch impact review and deploy skills.
 type: reference
 cited_by:
   - skills/engineering/post-launch-impact-review/SKILL.md

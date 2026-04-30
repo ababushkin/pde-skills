@@ -1,6 +1,8 @@
 ---
 name: kano-classification
-description: Five-category taxonomy for classifying feature types by user satisfaction response. Source: Noriaki Kano, 1984. Used in idea-triage to set scope expectations and detect delight traps.
+description: >
+  Five-category taxonomy for classifying feature types by user satisfaction response.
+  Source: Noriaki Kano, 1984. Used in idea-triage to set scope expectations and detect delight traps.
 type: reference
 cited_by:
   - skills/product/idea-triage/SKILL.md

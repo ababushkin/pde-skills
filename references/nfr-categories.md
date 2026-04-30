@@ -1,6 +1,9 @@
 ---
 name: nfr-categories
-description: Taxonomy of non-functional requirement categories for Rule A4. Each category requires a number, a unit, and a named fitness function. Used when completing the Constraints section of a design doc.
+description: >
+  Taxonomy of non-functional requirement categories for Rule A4. Each category requires
+  a number, a unit, and a named fitness function. Used when completing the Constraints
+  section of a design doc.
 type: reference
 cited_by:
   - skills/engineering/design-doc/SKILL.md

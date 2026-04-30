@@ -1,6 +1,8 @@
 ---
 name: ice-scoring
-description: ICE scoring mechanics — Impact, Confidence, Ease dimensions and worked example. Used for prioritising validated hypotheses.
+description: >
+  ICE scoring mechanics — Impact, Confidence, Ease dimensions and worked example.
+  Used for prioritising validated hypotheses.
 type: reference
 cited_by:
   - skills/product/idea-triage/SKILL.md

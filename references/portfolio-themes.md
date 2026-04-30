@@ -1,6 +1,8 @@
 ---
 name: portfolio-themes
-description: Seven-category taxonomy for classifying roadmap items by strategic purpose. Source: Shreyas Doshi. Used in roadmap-shape and capacity allocation under Rule B3.
+description: >
+  Seven-category taxonomy for classifying roadmap items by strategic purpose.
+  Source: Shreyas Doshi. Used in roadmap-shape and capacity allocation under Rule B3.
 type: reference
 cited_by:
   - skills/product/roadmap-shape/SKILL.md
