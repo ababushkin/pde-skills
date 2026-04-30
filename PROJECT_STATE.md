@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-30 (M5 complete: 3 promotions; README done; tag v0.1.0 next)
+Last updated: 2026-05-01 (M6 complete; project closed)
 
 ---
 
@@ -15,7 +15,7 @@ Last updated: 2026-04-30 (M5 complete: 3 promotions; README done; tag v0.1.0 nex
 | M3 | Now complete. All 8 Now artefacts accepted, coverage matrix audit done. | complete |
 | M4 | References complete. All 6 reference files merged. | complete |
 | M5 | Promotion review (optional). Re-evaluate Next items against current evidence. | complete |
-| M6 | Ship. v0.1.0 tagged, project closed. | pending |
+| M6 | Ship. All artefacts on main, project closed. | complete |
 
 ---
 
