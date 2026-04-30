@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-30 (Now artefacts complete; references phase next)
+Last updated: 2026-04-30 (References phase complete; promotion review and ship next)
 
 ---
 
@@ -13,7 +13,7 @@ Last updated: 2026-04-30 (Now artefacts complete; references phase next)
 | M1 | Project setup complete. Repo initialised, anatomy specs accepted, `PROJECT_STATE.md` initialised. | complete |
 | M2 | Root rules files accepted. `PRODUCT_RULES.md`, `eng-principles-universal.md`, `eng-principles-agentic.md` merged. | complete |
 | M3 | Now complete. All 8 Now artefacts accepted, coverage matrix audit done. | complete |
-| M4 | References complete. All 6 reference files merged. | pending |
+| M4 | References complete. All 6 reference files merged. | complete |
 | M5 | Promotion review (optional). Re-evaluate Next items against current evidence. | pending |
 | M6 | Ship. v0.1.0 tagged, project closed. | pending |
 
@@ -56,12 +56,12 @@ Last updated: 2026-04-30 (Now artefacts complete; references phase next)
 
 | File | Status | Cited by |
 |------|--------|----------|
-| `references/confidence-meter.md` | pending | idea-triage, roadmap-shape, post-launch-impact-review |
-| `references/ice-scoring.md` | pending | idea-triage |
-| `references/kano-classification.md` | pending | idea-triage |
-| `references/portfolio-themes.md` | pending | roadmap-shape |
-| `references/nfr-categories.md` | pending | design-doc |
-| `references/dora-metrics.md` | pending | post-launch-impact-review, deploy |
+| `references/confidence-meter.md` | accepted | idea-triage, roadmap-shape, post-launch-impact-review |
+| `references/ice-scoring.md` | accepted | idea-triage |
+| `references/kano-classification.md` | accepted | idea-triage |
+| `references/portfolio-themes.md` | accepted | roadmap-shape |
+| `references/nfr-categories.md` | accepted | design-doc |
+| `references/dora-metrics.md` | accepted | post-launch-impact-review, deploy |
 
 ---
 
