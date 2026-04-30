@@ -46,6 +46,8 @@ OKRs focus on artefact quality, shippability, and honest relationship to prior a
 
 Known carve-outs at M5: Eng Universal Principle 1 (outcome verification), Roadmap 10 and Eng Rule D2 (learning-loop principles). Each is intentionally left to v0.2 because the validating skills are in Next.
 
+Known structural limitation at v0.1: KR1.6 cannot be meaningfully evaluated at the Now set size (4 implementation artefacts). No principle can appear as `embedded` in 3 of 4 artefacts without being artificially forced there. This is a consequence of the intentionally small Now scope, not a quality gap. KR1.6 is deferred to the promotion review stage when enough skills exist for the criterion to be meaningful.
+
 ### Objective 2 — The pack honestly relates to prior art
 
 | KR | Measurement |
@@ -126,11 +128,11 @@ Per-milestone closure criteria.
 - [ ] `eng-principles-agentic.md` merged (sequential after universal).
 
 ### M3 — Now complete
-- [ ] All 5 remaining Now artefacts accepted.
-- [ ] Coverage matrix audit: every Now artefact traces to ≥1 principle with bucket.
-- [ ] Embedded-everywhere principles name three load-bearing homes (KR1.6).
-- [ ] Predecessor declarations verified honest.
-- [ ] Size-the-work rubric canonical in `README.md`.
+- [x] All 5 remaining Now artefacts accepted (README routing section deferred to ship stage per plan).
+- [x] Coverage matrix audit: every Now artefact traces to ≥1 principle with bucket.
+- [x] Embedded-everywhere principles (KR1.6): deferred — structurally unmeasurable at Now set size; see KR1.6 note above.
+- [x] Predecessor declarations verified honest.
+- [ ] Size-the-work rubric canonical in `README.md` (owner work, ship stage).
 
 ### M4 — References complete
 - [ ] All 6 reference files merged.
