@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-04-30 (M3: incremental-implementation accepted; three earlier artefacts at owner-review)
+Last updated: 2026-04-30 (M3: all skills/hooks accepted; M3 audit running)
 
 ---
 
@@ -24,12 +24,12 @@ Last updated: 2026-04-30 (M3: incremental-implementation accepted; three earlier
 | # | Artefact | Category | Track | Status | Branch | Notes |
 |---|----------|----------|-------|--------|--------|-------|
 | 1 | `PRODUCT_RULES.md` | rules | product | accepted | — | merged PR #2 |
-| 2 | `idea-triage` | skill | product | owner-review | skill/idea-triage | PR #4 |
+| 2 | `idea-triage` | skill | product | accepted | — | merged |
 | 3 | `eng-principles-universal.md` | rules | engineering | accepted | — | merged PR #1 |
 | 4 | `eng-principles-agentic.md` | rules | engineering | accepted | — | merged PR #3 |
-| 5 | `design-doc` | skill | engineering | owner-review | skill/design-doc | PR #5 |
+| 5 | `design-doc` | skill | engineering | accepted | — | merged |
 | 6 | `incremental-implementation` | skill | engineering | accepted | — | merged to main |
-| 7 | `stop-the-line` | hook | hook | owner-review | hook/stop-the-line | PR #6 |
+| 7 | `stop-the-line` | hook | hook | accepted | — | merged |
 | 8 | README routing section | meta | meta | pending | — | owner work, M6 |
 
 ---
