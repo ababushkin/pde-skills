@@ -13,7 +13,7 @@ principles_implemented:
     id: P6
     bucket: hook
   - source: eng-universal
-    id: C4
+    id: Rule C4
     bucket: embedded
 length_target: 60–100
 author: Anton Babushkin
