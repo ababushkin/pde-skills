@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-05-01 (M6 complete; project closed)
+Last updated: 2026-05-01 (prototype-to-validate promoted and authored)
 
 ---
 
@@ -34,6 +34,7 @@ Last updated: 2026-05-01 (M6 complete; project closed)
 | 9 | `using-this-pack` | skill | meta | accepted | — | promoted from Next |
 | 10 | `planning-and-task-breakdown` | skill | engineering | accepted | — | promoted from Next |
 | 11 | `roadmap-shape` | skill | product | accepted | — | promoted from Next |
+| 15 | `prototype-to-validate` | skill | engineering | accepted | — | promoted from Next |
 
 ---
 
@@ -44,7 +45,7 @@ Last updated: 2026-05-01 (M6 complete; project closed)
 | 12 | `small-batch` | hook | pending | after `stop-the-line` proves failure-mode-detection pattern |
 | 13 | `evidence-claim` | hook | pending | after `stop-the-line` proves failure-mode-detection pattern |
 | 14 | `problem-first-reviewer` | sub-agent | pending | when `design-doc` usage shows need |
-| 15 | `prototype-to-validate` | skill | pending | capacity opens |
+| 15 | `prototype-to-validate` | skill | accepted | promoted to Now |
 | 16 | `spike` | skill | pending | capacity opens |
 | 17 | `deploy` | skill | pending | capacity opens |
 | 18 | `post-launch-impact-review` | skill | pending | capacity opens |

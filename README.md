@@ -23,6 +23,7 @@ Skills encode the discipline that experienced PDE teams apply at each decision p
 |---|---|
 | An idea arrives — worth pursuing? | [`idea-triage`](skills/product/idea-triage/SKILL.md) |
 | Planning cycle — what to build next? | [`roadmap-shape`](skills/product/roadmap-shape/SKILL.md) |
+| Idea approved — does this feel right? | [`prototype-to-validate`](skills/engineering/prototype-to-validate/SKILL.md) |
 | Significant engineering work — how to build it? | [`design-doc`](skills/engineering/design-doc/SKILL.md) |
 | Have a design — break it into tasks | [`planning-and-task-breakdown`](skills/engineering/planning-and-task-breakdown/SKILL.md) |
 | Building anything non-trivial | [`incremental-implementation`](skills/engineering/incremental-implementation/SKILL.md) |
@@ -47,6 +48,7 @@ Skills encode the discipline that experienced PDE teams apply at each decision p
 |---|---|---|
 | [eng-principles-universal.md](skills/engineering/eng-principles-universal.md) | Rule set: design before build (A1–A5), small batch (B1), explicit contracts (C1–C3), technical quality (D1–D4). | Load persistently for engineering work |
 | [eng-principles-agentic.md](skills/engineering/eng-principles-agentic.md) | Agentic-specific constraints: scope discipline, no speculative refactoring, confirmation before destructive action. | Load alongside universal for agent-driven work |
+| [prototype-to-validate](skills/engineering/prototype-to-validate/SKILL.md) | Throwaway artefact (narrative, clickable, or code) to answer one product question before committing to a design. Time-boxed; exits with a written finding: proceed / reshape / kill. | Idea approved; dominant unknown is product feel or interaction |
 | [planning-and-task-breakdown](skills/engineering/planning-and-task-breakdown/SKILL.md) | Decomposes a design doc or spec into small, verifiable tasks with acceptance criteria and dependency order. | Design accepted; ready to implement |
 | [design-doc](skills/engineering/design-doc/SKILL.md) | Structures significant work before building: problem statement, approach options, chosen design, NFR constraints, operability plan. | Work exceeds 4 weeks, reused capability, or meaningful user/cost/compliance impact |
 | [incremental-implementation](skills/engineering/incremental-implementation/SKILL.md) | Thin vertical slices — implement, test, verify, commit. Walking skeleton first. Bug-fix sub-workflow for KTLO work. | Building anything touching more than one file |
