@@ -1,6 +1,6 @@
 # pde-skills
 
-**Workflow skills for a the small product-design-engineering team - including the team of one.**
+**Workflow skills for the small product-design-engineering team - including the team of one.**
 
 Skills encode the discipline that experienced PDE teams apply at each decision point: which ideas to pursue, how to structure work, how to build it, and how to catch failure modes before they compound. Packaged so AI agents follow them consistently instead of taking shortcuts.
 
