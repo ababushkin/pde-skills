@@ -25,11 +25,14 @@ Task arrives
     │
     ├── An idea arrived — worth pursuing?                  → idea-triage
     │       ├── Confidence ≥ 5: file in idea bank          (wait — no action until roadmap-shape runs)
+    │       │       └── Idea bank needs review/curation?   → backlog-manage
     │       └── Confidence < 5: validation slot
     │               ├── product feel unknown               → prototype-to-validate
     │               ├── customer reality unknown           → interview / survey
     │               ├── market signal unknown              → smoke test
     │               └── technical feasibility unknown     → spike (→ design-doc)
+    ├── Managing the idea bank or KTLO list?               → backlog-manage
+    │       └── Idea bank clean — ready to plan?           → roadmap-shape
     ├── Building or reviewing a roadmap?                   → roadmap-shape
     │       └── reads from idea bank (docs/idea-bank/)
     ├── Significant engineering work — how to build it?   → design-doc
@@ -75,6 +78,7 @@ The value of a skill is highest the first time you skip it and something breaks.
 | Skill | Trigger phrase | Key output |
 |---|---|---|
 | `idea-triage` | "We should build…", "A customer asked for…", "Competitor just launched…" | Triage record with ICE score and routing decision (idea bank or validation slot) |
+| `backlog-manage` | "Review the backlog", "Add to KTLO", "Promote this idea", "Kill this" | Updated idea bank records + KTLO list |
 | `prototype-to-validate` | Validation slot where dominant unknown is product feel or interaction | Written finding: proceed / reshape / kill |
 | `roadmap-shape` | "Let's do planning", "What should we build next?", "Review the roadmap" | Shaped Now/Next/Later roadmap with explicit capacity allocation |
 | `planning-and-task-breakdown` | "Design is accepted — let's implement", "Break this down into tasks" | Ordered task list with acceptance criteria |

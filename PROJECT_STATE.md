@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-05-01 (prototype-to-validate promoted and authored)
+Last updated: 2026-05-03 (backlog-manage authored and accepted)
 
 ---
 
@@ -35,6 +35,7 @@ Last updated: 2026-05-01 (prototype-to-validate promoted and authored)
 | 10 | `planning-and-task-breakdown` | skill | engineering | accepted | — | promoted from Next |
 | 11 | `roadmap-shape` | skill | product | accepted | — | promoted from Next |
 | 15 | `prototype-to-validate` | skill | engineering | accepted | — | promoted from Next |
+| 16 | `backlog-manage` | skill | product | accepted | — | new skill |
 
 ---
 

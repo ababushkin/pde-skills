@@ -154,6 +154,7 @@ Fill in the artefact template below and file it at `docs/idea-bank/<idea-slug>.m
 
 ## Routing
 <!-- idea bank | validation slot -->
+<!-- Live status field — backlog-manage reads and updates this section over the idea's lifecycle. -->
 <!-- State the routing and the reason. If validation slot: name the type of validation
      work needed to raise confidence (customer interview, smoke test, experiment, etc.). -->
 
