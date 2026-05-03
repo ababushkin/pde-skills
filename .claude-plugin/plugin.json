@@ -1,0 +1,12 @@
+{
+  "name": "pde",
+  "description": "Workflow skills for small product-design-engineering teams. Covers idea triage, roadmap shaping, prototyping, design docs, task breakdown, and incremental implementation.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Anton Babushkin"
+  },
+  "homepage": "https://github.com/ababushkin/pde-skills",
+  "repository": "https://github.com/ababushkin/pde-skills",
+  "license": "MIT",
+  "commands": "./.claude/commands"
+}

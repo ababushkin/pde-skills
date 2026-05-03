@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+CLAUDE_DIR="${HOME}/.claude"
+COMMANDS_DIR="${CLAUDE_DIR}/commands"
+CLAUDE_MD="${CLAUDE_DIR}/CLAUDE.md"
+
+echo "Installing pde-skills from ${REPO_DIR}"
+
+# 1. Symlink commands into ~/.claude/commands/pde
+mkdir -p "${COMMANDS_DIR}"
+
+if [ -L "${COMMANDS_DIR}/pde" ]; then
+  echo "Removing existing symlink: ${COMMANDS_DIR}/pde"
+  rm "${COMMANDS_DIR}/pde"
+elif [ -d "${COMMANDS_DIR}/pde" ]; then
+  echo "Removing existing directory: ${COMMANDS_DIR}/pde"
+  rm -rf "${COMMANDS_DIR}/pde"
+fi
+
+ln -s "${REPO_DIR}/.claude/commands" "${COMMANDS_DIR}/pde"
+echo "Linked: ${COMMANDS_DIR}/pde -> ${REPO_DIR}/.claude/commands"
+
+# 2. Add rule file references to ~/.claude/CLAUDE.md if not already present
+RULE_REFS=(
+  "@${REPO_DIR}/skills/product/PRODUCT_RULES.md"
+  "@${REPO_DIR}/skills/engineering/eng-principles-universal.md"
+  "@${REPO_DIR}/skills/engineering/eng-principles-agentic.md"
+)
+
+touch "${CLAUDE_MD}"
+
+for ref in "${RULE_REFS[@]}"; do
+  if grep -qF "${ref}" "${CLAUDE_MD}"; then
+    echo "Already present: ${ref}"
+  else
+    echo "${ref}" >> "${CLAUDE_MD}"
+    echo "Added: ${ref}"
+  fi
+done
+
+echo ""
+echo "Done. Restart Claude Code to pick up changes."
+echo ""
+echo "Available commands:"
+echo "  /pde:idea-triage           Triage an incoming idea"
+echo "  /pde:roadmap-shape         Shape a planning-cycle roadmap"
+echo "  /pde:prototype-to-validate Answer a product question before designing"
+echo "  /pde:design-doc            Structure significant engineering work"
+echo "  /pde:planning-and-task-breakdown  Break a design into tasks"
+echo "  /pde:incremental-implementation  Build in thin vertical slices"
+echo "  /pde:stop-the-line         Scan a diff for quality red flags"
+echo ""
+echo "To install via Claude Code marketplace instead:"
+echo "  /plugin install github@ababushkin/pde-skills"
