@@ -8,6 +8,7 @@ pack: meta
 lifecycle_stage: all
 length_target: 120–160
 author: Anton Babushkin
+# meta-pack skills are exempt from principles_implemented and predecessor — see docs/skill-anatomy.md
 ---
 
 # Using this pack

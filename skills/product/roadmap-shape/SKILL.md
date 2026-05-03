@@ -50,6 +50,12 @@ principles_implemented:
     bucket: standalone
 length_target: 250–320
 author: Anton Babushkin
+predecessor:
+  repo: none
+  skill: none
+  relation: new
+kept_from_predecessor: "n/a"
+changed_from_predecessor: "n/a"
 ---
 
 # Roadmap shape

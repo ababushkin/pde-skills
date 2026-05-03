@@ -46,9 +46,17 @@ In this exact order:
 
 Target 100–300 lines. Below 100, editor checks for under-specification (acceptable if genuinely complete). Above 300, editor checks for redundancy with other skills, scope creep, or over-explanation. Hard cap 350 lines; beyond that, split.
 
+## Artefact template section name
+
+The anatomy calls this section "Artefact template." Skills that produce a single named artefact may use a descriptive variant (e.g. "Task list template", "Finding template") — the name should identify the artefact type. The section must still appear in the required position.
+
 ## Root rules files
 
 `PRODUCT_RULES.md`, `eng-principles-universal.md`, and `eng-principles-agentic.md` mirror the shape of their source principles documents, not this anatomy.
+
+## Meta-pack skills
+
+Skills with `pack: meta` are navigation and orientation artefacts, not workflow skills. They are exempt from: `principles_implemented` frontmatter, `predecessor` frontmatter, and the body sections Inputs, Outputs, Artefact template, Common rationalisations, Red flags, and Verification / exit criteria. They must still have: Title, Purpose, When to use, When not to use, and a References or equivalent lookup table.
 
 ## See also
 

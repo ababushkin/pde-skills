@@ -22,7 +22,11 @@ principles_implemented:
 length_target: 180–240
 author: Anton Babushkin
 predecessor:
+  repo: none
+  skill: none
   relation: new
+kept_from_predecessor: "n/a"
+changed_from_predecessor: "n/a"
 ---
 
 # Prototype to validate

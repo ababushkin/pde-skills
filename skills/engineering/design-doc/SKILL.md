@@ -189,7 +189,7 @@ supersedes: <path to prior doc, or "none">
 
 ## Common rationalisations
 
-| Rationalisation | Counter-argument |
+| Rationalisation | Rebuttal |
 |---|---|
 | "It's too small to need a doc — we'll figure it out in the code." | Check Rule A1. If any trigger fires, the doc comes first. "Figuring it out in the code" is the build trap the trigger conditions were designed to catch. If no trigger fires, write an ADR. |
 | "We already know what to build — the doc is just overhead." | The Alternatives and Constraints sections surface what you don't know you don't know. A design doc with only the chosen solution is incomplete by Rule A2. If the outcome is truly obvious, the doc will be short and the overhead will be low. |
@@ -230,4 +230,4 @@ The design doc passes review when:
 - Nygard, Michael — "Release It!" (operability; ADR format)
 - Cockburn, Alistair — walking skeleton (Rule B2 source)
 - Ford, Parsons, Kua — "Building Evolutionary Architectures" (fitness functions; Rule A5 source)
-- `references/nfr-categories.md` — NFR taxonomy for Rule A4 (not yet authored; citation held for consistency check at merge)
+- `references/nfr-categories.md` — NFR taxonomy for Rule A4
