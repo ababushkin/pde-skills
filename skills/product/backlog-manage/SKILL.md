@@ -80,6 +80,7 @@ Without this skill, the idea bank accumulates zombie records, validation slots n
 <!-- status: validation slot — [method] in progress -->
 <!-- status: validation slot — [method] complete; confidence updated to X; promote or kill pending -->
 <!-- status: killed — [YYYY-MM-DD] — [one-line reason] -->
+<!-- status: on roadmap — [Now/Next/Later] — placed YYYY-MM-DD -->
 ```
 
 When a record has no status comment, treat it as `validation slot — method in progress` and flag it.
@@ -91,6 +92,7 @@ List all files in `docs/idea-bank/`. Read the `## Routing` section of each. Read
 
 **Step 2. Produce current state summary.**
 Group triage records by status:
+- _On roadmap_: count + list with horizon (Now/Next/Later) and date placed
 - _Idea bank (ready for roadmap-shape)_: count + list with ICE totals
 - _Validation slot (active)_: count + list with method and age in days since file creation date
 - _Validation slot (pending decision)_: flag explicitly — these need a promote or kill call
@@ -105,6 +107,7 @@ One of:
 - `promote` — move a named validation-slot item to idea bank with updated evidence
 - `kill` — mark a named item killed with documented reason
 - `update-confidence` — revise confidence score on a named item with new evidence (Rule D5)
+- `mark-placed` — record that `roadmap-shape` has placed a named item on the roadmap (horizon + date)
 
 Do not proceed until intent is named. If the owner says "just check the backlog," that is `review`.
 
@@ -114,6 +117,7 @@ Do not proceed until intent is named. If the owner says "just check the backlog,
 - **promote**: Require: item slug, updated Confidence score, evidence that changed it, new ICE total. Update `## Routing` status comment to `idea bank — ready for roadmap-shape`. Update `## ICE score` and `## Evidence` sections with the new values.
 - **kill**: Require: item slug and a one-line reason naming what evidence or circumstance drove the kill (Rule D2). Update `## Routing` status comment to `killed — [YYYY-MM-DD] — [reason]`.
 - **update-confidence**: Revise `## Evidence` section with new evidence. Recalculate ICE. Update `## Routing` status if the new Confidence score crosses 5 in either direction.
+- **mark-placed**: Require: item slug, horizon (Now/Next/Later), date placed. Update `## Routing` status comment to `on roadmap — [horizon] — placed YYYY-MM-DD`. This operation is normally called by `roadmap-shape` at the end of shaping, not manually.
 - **review**: No writes. Output the summary from Step 2 plus all flags from Step 6.
 
 **Step 5. [GATE] Confirm writes.**
@@ -123,6 +127,7 @@ Before modifying any file, state exactly what will change and in which file. Get
 Always report, regardless of intent:
 - Validation slots with no status comment, or open > 30 days with no progress note
 - Items marked "idea bank" with Confidence < 5 (miscategorised — should be in validation slot)
+- Items marked "on roadmap" that do not appear in `docs/roadmap.md` (orphaned — either roadmap was edited without updating the idea bank, or the item was removed from the roadmap and needs a new status)
 - KTLO list exceeding 10 open items (signals under-resourcing or scope stretch)
 - Any triage record with no ICE score (incomplete triage — return to `idea-triage`)
 
@@ -160,7 +165,7 @@ KTLO list at `docs/ktlo.md`:
 
 The skill has run correctly when:
 
-1. Every file in `docs/idea-bank/` has a `## Routing` section with a valid status comment in one of the four allowed forms.
+1. Every file in `docs/idea-bank/` has a `## Routing` section with a valid status comment in one of the five allowed forms.
 2. Every `promote` operation records an updated Confidence score and names the evidence that changed it.
 3. Every `kill` operation records a date and a one-line reason.
 4. `docs/ktlo.md` exists and follows the table format if any KTLO items have been added.

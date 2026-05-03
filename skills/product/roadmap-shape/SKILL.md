@@ -154,14 +154,17 @@ Select items for Now based on: ICE score, confidence, strategic fit, and capacit
 - Set an appetite (Rule C1): how much time is this problem worth? The appetite is a cap, not an estimate.
 - Attach a success criterion (Rule A3): what metric, measured how, over what window, tells us the bet paid off?
 - Confirm that solution detail is in the working documents, not the roadmap entry (Rule A4).
+- Update the item's `## Routing` status in its idea bank file to `on roadmap — Now — placed YYYY-MM-DD`.
 
 Do not fill Now beyond the available capacity. A full Now slot is a failing Now slot.
 
 **10. Shape Next.**
 Select directional candidates for Next. These are validated (confidence ≥ 5) but not yet fully scoped. Do not set appetites for Next items — the point of Now-Next-Later is that Next still has room to be reshaped as you learn. Do record the problem statement and the ICE score.
+- Update each item's `## Routing` status in its idea bank file to `on roadmap — Next — placed YYYY-MM-DD`.
 
 **11. Shape Later.**
 Place remaining validated candidates and high-interest low-confidence items in Later. Later items are hypotheses, not commitments. They should feel intentionally sparse — if Later has 30 items, it is not a Later section, it is a second backlog.
+- Update each item's `## Routing` status in its idea bank file to `on roadmap — Later — placed YYYY-MM-DD`.
 
 **12. [GATE] Shape review.**
 Read the shaped roadmap against the following named failure patterns:
