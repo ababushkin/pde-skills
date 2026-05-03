@@ -2,8 +2,13 @@
 name: prototype-to-validate
 description: >
   Build a throwaway artefact that answers one specific product question before committing
-  to a design. Use when the dominant unknown after idea-triage is product feel or
-  interaction, not technical feasibility.
+  engineering time to a design. Use when anyone wants to test an interaction, flow, or
+  concept before building it for real — regardless of whether idea-triage ran first.
+  Trigger phrases: "let's prototype this", "build a quick mockup", "can we test this
+  flow first", "let's validate the UX before building", "quick demo to see if it
+  works", "does this interaction make sense", "let's see what it feels like". Also
+  use when a design-doc stalls because the team disagrees about which approach will
+  feel right and opinion-based argument isn't resolving it.
 pack: engineering
 lifecycle_stage: define (discovery)
 principles_implemented:

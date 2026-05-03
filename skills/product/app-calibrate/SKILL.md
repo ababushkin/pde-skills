@@ -2,9 +2,13 @@
 name: app-calibrate
 description: >
   Creates or updates docs/app-context.md with app-specific baseline data — key metrics,
-  performance signals, user volume, and known problem areas. Run before idea-triage when
-  working with metric-driven improvement ideas. Trigger phrases: "calibrate the app context",
-  "set up baseline metrics", "update app metrics", "prepare for triage".
+  performance signals, user volume, and known problem areas. Run this before idea-triage
+  whenever the idea involves improving, reducing, increasing, or speeding up something
+  measurable — without baseline data, ICE Impact scores are ungrounded assertions.
+  Also run when app-context.md is missing, stale (>90 days), or a new MCP data source
+  has been connected. Trigger phrases: "calibrate the app context", "set up baseline
+  metrics", "update app metrics", "prepare for triage", "what are our current metrics",
+  "let's document our baseline", "I want to ground our scoring in real data".
 pack: product
 lifecycle_stage: define
 principles_implemented:
