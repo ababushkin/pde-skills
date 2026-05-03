@@ -5,14 +5,14 @@
 Skills encode the discipline that experienced PDE teams apply at each decision point: which ideas to pursue, how to structure work, how to build it, and how to catch failure modes before they compound. Packaged so AI agents follow them consistently instead of taking shortcuts.
 
 ```
-  DISCOVER         DECIDE          DESIGN            BUILD
- ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
- │  idea    │──▶ │  roadmap │──▶ │ design   │──▶ │  incr.   │
- │  triage  │    │  shape   │    │  doc     │    │  impl.   │
- └──────────┘    └──────────┘    └──────────┘    └──────────┘
-                                                       ▲
-                                                 planning &
-                                               task breakdown
+  DISCOVER         CURATE          DECIDE          DESIGN            BUILD
+ ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+ │  idea    │──▶ │ backlog  │──▶ │  roadmap │──▶ │ design   │──▶ │  incr.   │
+ │  triage  │    │  manage  │    │  shape   │    │  doc     │    │  impl.   │
+ └──────────┘    └──────────┘    └──────────┘    └──────────┘    └──────────┘
+  creates          promotes/        reads            how to             ▲
+  idea bank        kills items      idea bank        build it     planning &
+  records          updates scores   builds roadmap               task breakdown
 ```
 
 ---
@@ -22,6 +22,7 @@ Skills encode the discipline that experienced PDE teams apply at each decision p
 | You're doing this | Use this |
 |---|---|
 | An idea arrives — worth pursuing? | [`idea-triage`](skills/product/idea-triage/SKILL.md) |
+| Idea bank needs curation — promote, kill, or update confidence | [`backlog-manage`](skills/product/backlog-manage/SKILL.md) |
 | Planning cycle — what to build next? | [`roadmap-shape`](skills/product/roadmap-shape/SKILL.md) |
 | Idea approved — does this feel right? | [`prototype-to-validate`](skills/engineering/prototype-to-validate/SKILL.md) |
 | Significant engineering work — how to build it? | [`design-doc`](skills/engineering/design-doc/SKILL.md) |
@@ -39,8 +40,9 @@ Skills encode the discipline that experienced PDE teams apply at each decision p
 | Skill | What it does | Use when |
 |---|---|---|
 | [PRODUCT_RULES.md](skills/product/PRODUCT_RULES.md) | Rule set covering idea filtering (P2–P4), roadmap discipline (B1–B5), and capacity allocation (C1–C3). | Load persistently for product work |
-| [idea-triage](skills/product/idea-triage/SKILL.md) | Interrogates incoming ideas through confidence gates, ICE scoring, and Kano classification. Routes to: build, validate, defer, or discard. | Any proposal arrives |
-| [roadmap-shape](skills/product/roadmap-shape/SKILL.md) | Builds a roadmap using portfolio-theme classification and explicit capacity allocation. Names the implicit portfolio mix before committing. | Planning cycle; roadmap review |
+| [idea-triage](skills/product/idea-triage/SKILL.md) | Interrogates incoming ideas through confidence gates, ICE scoring, and Kano classification. Routes to idea bank (Confidence ≥ 5) or validation slot (Confidence < 5). | Any proposal arrives |
+| [backlog-manage](skills/product/backlog-manage/SKILL.md) | Maintains the idea bank between triage and planning. Promotes validated items, kills stale ones, updates confidence scores with new evidence, and tracks KTLO work. Run before `roadmap-shape` so it reads a clean input. | Idea bank needs curation; validation result arrived; adding KTLO work; feeding post-launch evidence back |
+| [roadmap-shape](skills/product/roadmap-shape/SKILL.md) | Reads the curated idea bank and builds a Now/Next/Later roadmap with explicit portfolio-theme mix and capacity allocation. Assumes the idea bank is clean. | Planning cycle; roadmap review |
 
 ### Engineering
 
