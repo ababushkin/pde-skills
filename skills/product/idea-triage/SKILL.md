@@ -69,6 +69,8 @@ Run this skill when an idea arrives from outside the existing roadmap and backlo
 
 The raw idea in whatever form it arrived: a sentence, a Slack message, a customer quote, a feature request, a competitor announcement, an analytics anomaly. No special format required at intake. The skill works with whatever text is provided and interrogates it from there.
 
+Optional: `docs/app-context.md` in the current project root. When present, the skill uses baseline metrics to ground Impact scoring and to add a measurable target to the problem statement. When absent, scoring proceeds without baseline data — suggest running `app-calibrate` first for improvement-type ideas (improving, reducing, increasing, or speeding up something measurable).
+
 ## Outputs
 
 A triage record filed at `docs/idea-bank/<idea-slug>.md`. The record conforms to the A2 template (problem / customer / outcome) and carries a mandatory ICE score and routing decision.
@@ -91,8 +93,14 @@ Who is affected? How often? What is the observable negative outcome? What eviden
 
 Name the specific evidence and the type. "Our sales team hears this a lot" is an anecdote (0.5), not data.
 
+**Baseline check.** If `docs/app-context.md` exists in the current project: read it. Identify the 1–2 metrics most relevant to this idea's domain. Record their Current values, Targets, and Sources in the Evidence section of the triage record. Apply the data-source calibration from `references/app-context-schema.md`: manually entered metrics count as Gilad 2–3; metrics from live MCP sources count as Gilad 4–6. Metrics with a Last measured date > 90 days old are treated as Gilad 1–2.
+
+If `docs/app-context.md` does not exist and the idea is improvement-type: note the absence in the Evidence section and recommend `app-calibrate` before proceeding. Do not block triage — proceed with gut-estimated Impact, but flag it.
+
 **4. Write the problem statement.**
 Apply the A2 template: "For [customer segment], we believe [problem] is causing [negative outcome]." Write it out. Do not paraphrase it; fill in the three blanks.
+
+If baseline data is available from `docs/app-context.md`: include a measurable target in the negative outcome clause. Format: "...causing [negative outcome] — currently at [baseline value], targeting [target]." If no baseline data: proceed without it; the problem statement is valid but mark it as lacking a measurable target.
 
 **5. [GATE] Does the problem statement hold?**
 Can you name the customer segment, the problem, and the negative outcome clearly and specifically? If any of the three blanks cannot be filled with something concrete — if they contain hedges like "various users" or "some friction" — the idea is not ready. Return for clarification or discard. Do not proceed.
@@ -102,6 +110,8 @@ Assign three scores on a 1–10 scale:
 - **Impact**: expected magnitude of change on a customer or business metric if this problem is solved.
 - **Confidence**: the Gilad score from step 3, scaled to 1–10. A Gilad 0.1 maps to ICE Confidence 1; a Gilad 8–10 maps to ICE Confidence 8–10.
 - **Ease**: rough effort proxy — how hard is this to solve? Ease is an estimate only; do not over-invest in it at triage stage.
+
+**Grounding Impact on baseline data.** If app-context baseline data is available for this idea's metric: ground the Impact score on the expected delta from the Current value toward the Target. A 20–30% improvement on a primary metric = Impact 7–8; improvement on a secondary metric = 4–6; marginal improvement on any metric = 2–3. If no baseline data is present: estimate as usual, but add a note in the ICE score table rationale column: "ungrounded — no app-context baseline."
 
 Compute ICE = Impact × Confidence × Ease.
 
@@ -203,6 +213,8 @@ The skill has run correctly when:
 - `skills/product/PRODUCT_RULES.md` — P2, P3, P4, A2, A5, A6, B2, B6 (direct trace)
 - `references/confidence-meter.md` — Gilad's Confidence Meter calibration scale
 - `references/ice-scoring.md` — ICE scoring mechanics and worked examples
+- `references/app-context-schema.md` — baseline data schema, validity rules, and sourcing calibration
+- `skills/product/app-calibrate/SKILL.md` — app context creation and refresh
 - Itamar Gilad, "GIST Planning" and "Confidence Meter" (external)
 - Marty Cagan, "Inspired" — problem-vs-solution framing, SVPG
 - Janna Bastow, Now-Next-Later roadmap — A6 idea bank / roadmap distinction

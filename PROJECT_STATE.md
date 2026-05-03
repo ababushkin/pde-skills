@@ -2,7 +2,7 @@
 
 Source of truth for artefact and milestone status. Supervisor owns this file. Updated on every state transition.
 
-Last updated: 2026-05-03 (backlog-manage authored and accepted)
+Last updated: 2026-05-03 (app-calibrate skill + app-context-schema reference added)
 
 ---
 
@@ -36,6 +36,7 @@ Last updated: 2026-05-03 (backlog-manage authored and accepted)
 | 11 | `roadmap-shape` | skill | product | accepted | — | promoted from Next |
 | 15 | `prototype-to-validate` | skill | engineering | accepted | — | promoted from Next |
 | 16 | `backlog-manage` | skill | product | accepted | — | new skill |
+| 17 | `app-calibrate` | skill | product | accepted | — | new skill; grounds idea-triage Impact scores |
 
 ---
 
@@ -54,7 +55,7 @@ Last updated: 2026-05-03 (backlog-manage authored and accepted)
 
 ---
 
-## References (6 files)
+## References (7 files)
 
 | File | Status | Cited by |
 |------|--------|----------|
@@ -64,6 +65,7 @@ Last updated: 2026-05-03 (backlog-manage authored and accepted)
 | `references/portfolio-themes.md` | accepted | roadmap-shape |
 | `references/nfr-categories.md` | accepted | design-doc |
 | `references/dora-metrics.md` | accepted | post-launch-impact-review, deploy |
+| `references/app-context-schema.md` | accepted | app-calibrate, idea-triage |
 
 ---
 
