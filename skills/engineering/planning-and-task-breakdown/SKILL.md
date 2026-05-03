@@ -107,6 +107,17 @@ Review every task. Any task that:
 
 is too big. Split it. Size is not about effort estimation; it is about verification granularity. Small tasks surface problems early.
 
+Example — too big:
+> "Implement user authentication, including sign-up, login, password reset, and session management."
+
+Split into verifiable tasks:
+> Task A: POST /auth/signup creates a user and returns a JWT — covered by an integration test.
+> Task B: POST /auth/login returns a JWT for valid credentials, 401 for invalid — covered by tests.
+> Task C: POST /auth/password-reset sends a reset email — covered by a test mocking the mailer.
+> Task D: Session expiry revokes access on subsequent requests — covered by a test advancing time.
+
+Each task has one observable outcome, one test, and one commit boundary. That is a correctly sized task.
+
 **6. Order by dependency.**
 Sequence tasks so that each one's dependencies are complete before it starts. Call out explicit dependencies (on other tasks in this list, on external work, on platform capabilities). If a task depends on work from another team, flag it immediately — Rule C4: dependencies are surfaced before commitment.
 
@@ -152,15 +163,20 @@ Last updated: <date>
 | "This task is a bit big but we know what we're doing." | Task size is not a trust issue — it is a verification issue. Big tasks fail silently. Small tasks fail loudly and early. |
 | "The design doc isn't fully accepted but it's close enough." | An almost-accepted design doc means the approach is still negotiable. Tasks broken down from a negotiable design are likely to be redone. |
 | "We don't need a walking skeleton — we'll integrate at the end." | Integration at the end is the most expensive integration there is. The walking skeleton exists to find integration problems on day 1, not day 29. |
+| "We already know the dependencies — no need to list them." | Dependencies change during implementation; listing them before forces you to verify each one rather than discover them when they block you. A listed dependency that turns out not to exist costs nothing. An unlisted dependency that surfaces mid-sprint costs days. |
+| "I'll write acceptance criteria after I implement so I know what 'done' looks like." | By then you've already built the wrong thing. Acceptance criteria written before implementation are a spec — they constrain what you build. Criteria written after implementation describe what you built. The goal is the former. |
+| "The task list will need to change anyway, so there's no point spending time on it." | The value is not the list surviving implementation intact. It is the thinking done while creating it — discovering the dependencies, sizing the slices, identifying the walking skeleton. A plan that gets revised is still better than no plan. |
 
 ## Red flags
 
 - The walking skeleton is missing or is listed as something other than task 1.
 - Any task has more than one independent acceptance criterion.
 - Acceptance criteria say "feature is implemented" or "code is written" rather than describing a verifiable condition.
+- Acceptance criteria reference implementation details ("the function is written") rather than observable behaviour ("the endpoint returns X for input Y").
 - The task list was written before reading the constraints section of the design doc.
 - A task depends on unresolved external work that hasn't been flagged.
 - The list was generated from the design doc introduction without reading the full document.
+- A "setup" or "scaffolding" task appears before the walking skeleton, deferring integration discovery.
 
 ## Verification / exit criteria
 
@@ -172,6 +188,8 @@ The skill has run correctly when:
 4. Every task can be described in one sentence.
 5. Dependencies are listed for every task that has them.
 6. Any external or cross-team dependency has been surfaced explicitly in the open questions section.
+7. No "setup" or "scaffolding" task precedes the walking skeleton — if infrastructure is needed before the skeleton, the skeleton task encompasses it.
+8. The open questions section is either populated with owners and resolution dates, or explicitly marked empty because no unresolved questions remain.
 
 ## References
 
