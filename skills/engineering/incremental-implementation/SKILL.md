@@ -1,9 +1,12 @@
 ---
 name: incremental-implementation
 description: >
-  Implement an accepted design doc in thin vertical slices, walking skeleton first.
-  Use when a design doc is accepted and implementation is ready to begin. Also use
-  for KTLO bug fixes via the bug fix sub-workflow (no design doc required).
+  Implement work in thin vertical slices, walking skeleton first, with a test-verify
+  gate before each slice is committed. Use when implementation is ready to begin —
+  whether that's a new feature, a significant change, or a KTLO bug fix. Trigger
+  phrases: "let's build this", "start implementing", "code this up", "write the
+  code for", "implement the", "let's start coding", "begin the implementation".
+  Also use for bug fixes — no design doc required for KTLO path.
 pack: engineering
 lifecycle_stage: build
 principles_implemented:

@@ -2,9 +2,13 @@
 name: design-doc
 description: >
   Produce a structured design document before any non-trivial implementation begins.
-  Use when any Rule A1 trigger fires: work exceeds four weeks, capability will be
-  reused outside the building team, or the change has meaningful impact on users,
-  cost, or compliance posture.
+  Use when someone asks "how should we build X", "what's the architecture for Y",
+  "should we build or buy Z", or when work will take more than a month, touch shared
+  infrastructure, or meaningfully affect users, cost, or compliance. Also use when
+  an engineer is about to start a significant project with no written design —
+  even if they haven't asked for a doc explicitly. Trigger phrases: "how do we
+  build", "design this", "architecture for", "technical approach to", "what's the
+  plan for building", "let's spec this out".
 pack: engineering
 lifecycle_stage: define
 principles_implemented:

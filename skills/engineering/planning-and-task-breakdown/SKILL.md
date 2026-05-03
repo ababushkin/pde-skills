@@ -1,9 +1,13 @@
 ---
 name: planning-and-task-breakdown
 description: >
-  Decomposes an accepted design doc or spec into small, verifiable tasks with acceptance
-  criteria and dependency ordering. Use when implementation is ready to begin and you
-  need a sequence of tasks to hand to incremental-implementation.
+  Decomposes a design or spec into small, verifiable tasks with acceptance criteria
+  and dependency ordering — so implementation can proceed one confirmed slice at a
+  time. Use before starting any non-trivial implementation. Trigger phrases: "break
+  this down into tasks", "what do we need to build", "give me a task list", "sequence
+  the work", "plan the implementation", "what order should we build this in",
+  "decompose this into steps". Use this skill before incremental-implementation
+  whenever the sequence of work isn't obvious.
 pack: engineering
 lifecycle_stage: plan
 principles_implemented:
