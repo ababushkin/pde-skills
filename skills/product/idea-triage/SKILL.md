@@ -107,10 +107,21 @@ Compute ICE = Impact × Confidence × Ease.
 
 **7. [GATE] Route the idea.**
 Check the Confidence score:
-- Confidence < 5: route to **validation slot**. Do not assign a build bet. Name the type of validation work needed (customer interview, smoke test, experiment) to raise confidence. This is a hard gate — low confidence earns a validation slot, not a build slot (Rule B6).
-- Confidence ≥ 5: route to **idea bank** as a candidate for roadmap consideration.
+- Confidence < 5: route to **validation slot**. Do not assign a build bet. Name the type of validation work needed to raise confidence. This is a hard gate — low confidence earns a validation slot, not a build slot (Rule B6).
+- Confidence ≥ 5: route to **idea bank** as a candidate for roadmap consideration. File the record and stop. No further action until `roadmap-shape` runs — the triage record is not a trigger for implementation.
 
 There is no parking lot (Rule A6). Every triaged idea goes to exactly one of these two places.
+
+**Choosing the validation method (for validation slot items only).** Pick by dominant unknown:
+
+| Dominant unknown | Method |
+|---|---|
+| Product feel — how the interaction works, whether a flow makes sense | `prototype-to-validate` |
+| Customer reality — does this problem exist, how often, for whom | Customer interview or survey |
+| Market signal — will people pay, sign up, switch | Smoke test or landing-page test |
+| Technical feasibility — can we build this, at what cost | Spike (→ `design-doc`) |
+
+One method per validation slot. If multiple unknowns exist, pick the riskiest one and run that method first. Prototype is not the default — it is specifically for product feel unknowns.
 
 **8. Write and file the triage record.**
 Fill in the artefact template below and file it at `docs/idea-bank/<idea-slug>.md`.
@@ -183,7 +194,8 @@ The skill has run correctly when:
 3. The problem restatement matches the A2 format exactly: "For [customer segment], we believe [problem] is causing [negative outcome]."
 4. The Confidence score is explicitly tied to a named evidence type.
 5. The routing decision names exactly one destination: idea bank or validation slot (not both, not neither, not a parking lot).
-6. If routed to validation slot, the record names the type of validation work needed.
+6. If routed to validation slot, the record names the specific validation method (prototype, interview, smoke test, or spike) and the dominant unknown it will resolve.
+7. If routed to idea bank (Confidence ≥ 5), no further action is taken on this idea until `roadmap-shape` runs. The triage record is not a trigger for implementation.
 
 ## References
 
